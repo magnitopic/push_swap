@@ -22,7 +22,7 @@ $(LIBFT):
 			@make -C libft
 
 $(PUSHSWAP):		$(PUSHSWAP_SRC)
-					$(CC) $(CFLAGS) $(PUSHSWAP_SRC) $(LIBFT_SRC)$(LIBFT) -o $(PUSHSWAP)
+					$(CC) $(CFLAGS) $(PUSHSWAP_SRC) random_staks.c $(LIBFT_SRC)$(LIBFT) -o $(PUSHSWAP)
 					@printf "Push_swap compiled ✅\n\n"
 
 clean:
