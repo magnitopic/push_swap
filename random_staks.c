@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:23:34 by alaparic          #+#    #+#             */
-/*   Updated: 2022/12/19 16:17:42 by alaparic         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:09:46 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 static int	ft_contains(int *array, int value)
 {
-	int	flag;
-
-	flag = 0;
 	while (*array)
 	{
 		if (*array++ == value)
-			flag = 1;
+			return (1);
 	}
-	return (flag);
+	return (0);
 }
 
 int	*random_stack(int amount)
@@ -36,13 +33,16 @@ int	*random_stack(int amount)
 	nums = ft_calloc((amount + 1), sizeof(int));
 	while (i < amount)
 	{
-		rnd = (rand() % (amount)) + 1;
+		rnd = (rand() % (201) + 1);
 		while (ft_contains(nums, rnd))
 		{
-			rnd = (rand() % (amount)) + 1;
+			rnd = (rand() % (201) + 1);
 		}
 		nums[i] = rnd;
 		i++;
 	}
+	i = 0;
+	while (i < amount)
+		nums[i++] -= 101;
 	return (nums);
 }
