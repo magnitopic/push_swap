@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2022/12/30 17:33:30 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/01/01 00:51:50 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int		*random_stack(int amount);
 void	sa(int *stack_a, int a_size);
 void	sb(int *stack_b, int b_size);
 void	ss(int *stack_a, int a_size, int *stack_b, int b_size);
-void	pa(int *stack_a, int *a_size, int *stack_b, int *b_size);
+void	pa(int *stack_a, int *a_size, int *stack_b, int b_size);
 
 #endif

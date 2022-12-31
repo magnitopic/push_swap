@@ -6,21 +6,11 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2022/12/28 18:33:15 by alaparic         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:57:11 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stacks(int *stack_a, int *stack_b, int longitud)
-{
-	int	i;
-
-	while (i < longitud)
-	{
-
-	}
-}
 
 int	main(void)
 {
