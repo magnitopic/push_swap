@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2022/12/18 19:25:55 by alaparic         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:33:30 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include "./libft/libft.h"
 
-int	*random_stack(int amount);
+int		*random_stack(int amount);
+void	sa(int *stack_a, int a_size);
+void	sb(int *stack_b, int b_size);
+void	ss(int *stack_a, int a_size, int *stack_b, int b_size);
+void	pa(int *stack_a, int *a_size, int *stack_b, int *b_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2022/12/28 18:29:22 by alaparic         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:33:15 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,6 @@ void	print_stacks(int *stack_a, int *stack_b, int longitud)
 	{
 
 	}
-}
-
-void	sa(int *stack_a, int a_size)
-{
-	int	aux;
-
-	if (a_size <= 1)
-		return ;
-	aux = stack_a[0];
-	stack_a[0] = stack_a[1];
-	stack_a[1] = aux;
 }
 
 int	main(void)
