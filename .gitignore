@@ -1,3 +1,4 @@
 *.out
 push_swap
 .vscode
+test.c
