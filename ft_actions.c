@@ -6,13 +6,13 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/01/01 12:34:01 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/01/01 13:35:52 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(int *stack_a, int a_size)
+void	ft_swap(int *stack_a, int a_size)
 {
 	int	aux;
 
@@ -23,10 +23,8 @@ void	sa(int *stack_a, int a_size)
 	stack_a[1] = aux;
 }
 
-void	pa(int *stack_a, int *a_size, int *stack_b, int b_size)
+void	ft_push(int *stack_a, int *a_size, int *stack_b, int b_size)
 {
-	int	*new_stack_a;
-	int	*new_stack_b;
 	int	i;
 
 	if (b_size < 1)
@@ -46,7 +44,7 @@ void	pa(int *stack_a, int *a_size, int *stack_b, int b_size)
 	}
 }
 
-void	ra(int *stack_a, int *a_size)
+void	ft_rotate(int *stack_a, int *a_size)
 {
 	int	aux;
 	int	i;
@@ -63,7 +61,7 @@ void	ra(int *stack_a, int *a_size)
 	stack_a[*a_size - 1] = aux;
 }
 
-void	rra(int *stack_a, int *a_size)
+void	ft_reverse_rotate(int *stack_a, int *a_size)
 {
 	int	aux;
 	int	i;
@@ -106,9 +104,10 @@ int	main(void)
 		ft_printf("%d", stack_b[i++]);
 	ft_printf("\n");
 	ft_printf("\n");
-	ra(stack_a, &a_size);
-	//sa(stack_a, a_size);
-	//pa(stack_a, &a_size, stack_b, (total_size - a_size));
+	ft_swap(stack_a, a_size);
+	//ft_push(stack_a, &a_size, stack_b, total_size - a_size);
+	//ft_rotate(stack_a, &a_size);
+	//ft_reverse_rotate(stack_a, &a_size);
 	i = 0;
 	while (i < a_size)
 		ft_printf("%d", stack_a[i++]);
