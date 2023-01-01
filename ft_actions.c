@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/01/01 12:15:23 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/01/01 12:34:01 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,6 @@ void	sa(int *stack_a, int a_size)
 	aux = stack_a[0];
 	stack_a[0] = stack_a[1];
 	stack_a[1] = aux;
-}
-
-void	sb(int *stack_b, int b_size)
-{
-	int	aux;
-
-	if (b_size <= 1)
-		return ;
-	aux = stack_b[0];
-	stack_b[0] = stack_b[1];
-	stack_b[1] = aux;
-}
-
-void	ss(int *stack_a, int a_size, int *stack_b, int b_size)
-{
-	sa(stack_a, a_size);
-	sa(stack_b, b_size);
 }
 
 void	pa(int *stack_a, int *a_size, int *stack_b, int b_size)
@@ -61,6 +44,40 @@ void	pa(int *stack_a, int *a_size, int *stack_b, int b_size)
 		stack_b[i] = stack_b[i + 1];
 		i++;
 	}
+}
+
+void	ra(int *stack_a, int *a_size)
+{
+	int	aux;
+	int	i;
+
+	if (*a_size < 1)
+		return ;
+	aux = stack_a[0];
+	i = 0;
+	while (i < *a_size)
+	{
+		stack_a[i] = stack_a[i + 1];
+		i++;
+	}
+	stack_a[*a_size - 1] = aux;
+}
+
+void	rra(int *stack_a, int *a_size)
+{
+	int	aux;
+	int	i;
+
+	if (*a_size < 1)
+		return ;
+	aux = stack_a[*a_size - 1];
+	i = *a_size - 1;
+	while (i > 0)
+	{
+		stack_a[i] = stack_a[i - 1];
+		i--;
+	}
+	stack_a[0] = aux;
 }
 
 int	main(void)
@@ -89,7 +106,9 @@ int	main(void)
 		ft_printf("%d", stack_b[i++]);
 	ft_printf("\n");
 	ft_printf("\n");
-	pa(stack_a, &a_size, stack_b, (total_size - a_size));
+	ra(stack_a, &a_size);
+	//sa(stack_a, a_size);
+	//pa(stack_a, &a_size, stack_b, (total_size - a_size));
 	i = 0;
 	while (i < a_size)
 		ft_printf("%d", stack_a[i++]);
