@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/01/01 13:35:22 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/01/01 14:18:02 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	ft_swap(int *stack_a, int a_size);
 void	ft_push(int *stack_a, int *a_size, int *stack_b, int b_size);
 void	ft_rotate(int *stack_a, int *a_size);
 void	ft_reverse_rotate(int *stack_a, int *a_size);
+void	print_stacks(int *stack_a, int a_size, int *stack_b, int b_size);
 
 #endif
