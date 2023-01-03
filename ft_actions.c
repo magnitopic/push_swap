@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/01/01 13:36:36 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/01/01 20:02:10 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,28 @@ void	ft_swap(int *stack_a, int a_size)
 	stack_a[1] = aux;
 }
 
-void	ft_push(int *stack_a, int *a_size, int *stack_b, int b_size)
+void	pa(int *stack_a, int *a_size, int *stack_b, int b_size)
+{
+	int	i;
+
+	if (b_size < 1)
+		return ;
+	*a_size = *a_size + 1;
+	i = *a_size;
+	while (i >= 0)
+	{
+		stack_a[i + 1] = stack_a[i];
+		i--;
+	}
+	stack_a[0] = stack_b[0];
+	while (i < b_size)
+	{
+		stack_b[i] = stack_b[i + 1];
+		i++;
+	}
+}
+
+void pb(int *stack_b, int b_size, int *stack_a, int *a_size)
 {
 	int	i;
 

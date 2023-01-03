@@ -1,6 +1,11 @@
 # push_swap
-PUSHSWAP			=	push_swap
-PUSHSWAP_SRC		=	push_swap.c
+NAME				=	push_swap
+PUSHSWAP			=	push_swap.a
+PUSHSWAP_SRC		=	push_swap.c \
+						print_stacks.c \
+						ft_actions.c \
+						random_staks.c \
+OBJS			= $(PUSHSWAP_SRC:.c=.o)
 
 # Libft
 LIBFT				=	libft.a
@@ -12,21 +17,19 @@ RM					=	rm -f
 CFLAGS				=	-Wall -Werror -Wextra
 
 # Commands
-all:		$(LIBFT) $(PUSHSWAP)
-			@printf "Minitalk compiled ✅\n"
-
-bonus:		$(LIBFT) $(SERVER_BONUS) $(CLIENT_BONUS)
-			@printf "Minitalk bonus compiled ✅✨\n"
+all:		$(LIBFT) $(NAME)
+			@printf "Push_swap compiled ✅\n"
 
 $(LIBFT):
 			@make -C libft
 
-$(PUSHSWAP):		$(PUSHSWAP_SRC)
-					$(CC) $(CFLAGS) $(PUSHSWAP_SRC) random_staks.c $(LIBFT_SRC)$(LIBFT) -o $(PUSHSWAP)
+$(NAME):			$(OBJS)
+					ar rcs $(OBJS)
+					$(CC) $(CFLAGS) $(PUSHSWAP) random_staks.c $(LIBFT_SRC)$(LIBFT) -o $(PUSHSWAP)
 					@printf "Push_swap compiled ✅\n\n"
 
 clean:
-			@$(RM) $(PUSHSWAP)
+			@$(RM) $(PUSHSWAP) $(PUSHSWAP)
 			@printf "\nRemoved push_swap 🗑️\n"
 
 fclean:		clean
