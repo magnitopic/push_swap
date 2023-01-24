@@ -34,4 +34,4 @@ def howSum(target, numbers, memo={}):
 
 
 if __name__ == "__main__":
-    print(howSum(300, [7, 14]))
+    print(howSum(5000, [7, 14]))
