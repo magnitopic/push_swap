@@ -7,6 +7,9 @@ Finally do the project in C and check that I have every thing the subject asks o
 
 ## Part 1: Dynamic programing
 
+These exercises are from [this YouTube video](https://www.youtube.com/watch?v=oBt53YbR9Kk) by [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ) on dynamic programing.
+
+### Exercises
 -   `fibonacci.py` - given a number it returns that position of the fibonacci sequence
 -   `gridTraveler.py` - given a grid of `x,y`, you must travel form the top left corner to the bottom right corner. You can only move down or right. How many ways can you travel the grid?
 -   `canSum.py` - given a number and an array of numbers, you must return True or False if it is posible sum the first number with the numbers in the array. You can repeat the same number as much as you want
