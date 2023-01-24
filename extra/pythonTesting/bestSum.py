@@ -17,9 +17,12 @@
 
 # Optimized algorithm
 def bestSum(target, numbers, memo={}):
-    if target in memo: return memo[target]
-    if target == 0:return []
-    if target < 0:return None
+    if target in memo:
+        return memo[target]
+    if target == 0:
+        return []
+    if target < 0:
+        return None
     shortestCombination = None
     for i in numbers:
         result = bestSum(target - i, numbers)
@@ -27,7 +30,7 @@ def bestSum(target, numbers, memo={}):
             result.append(i)
             if shortestCombination == None or len(result) < len(shortestCombination):
                 shortestCombination = result
-    memo[target]=shortestCombination
+    memo[target] = shortestCombination
     return shortestCombination
 
 
