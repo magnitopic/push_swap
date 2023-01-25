@@ -11,8 +11,6 @@ These exercises are from [this YouTube video](https://www.youtube.com/watch?v=oB
 
 ### Exercises
 
-### Memoization
-
 -   `fibonacci.py` - given a number it returns that position of the fibonacci sequence
 
 -   `gridTraveler.py` - given a grid of `x,y`, you must travel form the top left corner to the bottom right corner. You can only move down or right. How many ways can you travel the grid?
