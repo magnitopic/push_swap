@@ -30,6 +30,9 @@ def reverse_rotate(a):
         a.insert(0, a[len(a)-1])
         a.pop(len(a)-1)
 
+def rrr(a, b):
+    reverse_rotate(a)
+    reverse_rotate(b)
 
 if __name__ == "__main__":
     a, b = [1, 2, 3], []
