@@ -52,9 +52,10 @@ def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "
 
 
 def push_swap():
-    a = [1, 0, -1]
+    a = [2, 0, 1]
     b = []
-    print(decide(a, b))
+    for i in decide(a, b):
+        print(i)
 
 
 if __name__ == "__main__":
