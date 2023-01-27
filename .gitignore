@@ -4,3 +4,4 @@ push_swap
 test.c
 push_swap.a
 .DS_Store
+__pycache__
