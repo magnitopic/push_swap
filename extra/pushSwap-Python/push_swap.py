@@ -12,7 +12,9 @@ def checkSorted(a, b):
     return True
 
 
-def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "r"], count=0):
+def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "r"], count=0, memo={}):
+    if str(a) in memo:
+        print(memo[a])
     if checkSorted(a, b):
         return []
     if count > 4:
@@ -48,6 +50,8 @@ def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "
             result.append(i)
             if shortestCombination == None or len(result) < len(shortestCombination):
                 shortestCombination = result
+    #memo[str(a)] = str(shortestCombination)
+    print([str(a).replace(char, '') for char in "[],"]) 
     return shortestCombination
 
 
