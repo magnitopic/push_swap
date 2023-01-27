@@ -1,5 +1,5 @@
 # Basic algorithm
-""" def bestSum(target, numbers):
+def bestSum(target, numbers):
     if target == 0:
         return []
     if target < 0:
@@ -12,11 +12,11 @@
             if shortestCombination == None or len(result) < len(shortestCombination):
                 shortestCombination = result
 
-    return shortestCombination """
+    return shortestCombination
 
 
 # Optimized algorithm
-def bestSum(target, numbers, memo={}):
+""" def bestSum(target, numbers, memo={}):
     if target in memo:
         return memo[target]
     if target == 0:
@@ -31,7 +31,7 @@ def bestSum(target, numbers, memo={}):
             if shortestCombination == None or len(result) < len(shortestCombination):
                 shortestCombination = result
     memo[target] = shortestCombination
-    return shortestCombination
+    return shortestCombination """
 
 
 if __name__ == "__main__":

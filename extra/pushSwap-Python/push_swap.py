@@ -1,3 +1,5 @@
+import copy
+
 from functions import *
 
 
@@ -13,33 +15,35 @@ def checkSorted(a, b):
 def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "r"], count=0):
     if checkSorted(a, b):
         return []
-    if count > 100:
+    if count > 4:
         return None
     shortestCombination = None
     for i in moves:
+        aCopy = copy.deepcopy(a)
+        bCopy = copy.deepcopy(b)
         if (i == "sa"):
-            swap(a)
+            swap(aCopy)
         elif (i == "sb"):
-            swap(b)
+            swap(bCopy)
         elif (i == "ss"):
-            ss(a, b)
+            ss(aCopy, bCopy)
         elif (i == "pa"):
-            push(a, b)
+            push(aCopy, bCopy)
         elif (i == "pb"):
-            push(b, a)
+            push(bCopy, aCopy)
         elif (i == "ra"):
-            rotate(a)
+            rotate(aCopy)
         elif (i == "rb"):
-            rotate(b)
+            rotate(bCopy)
         elif (i == "rr"):
-            rr(a, b)
+            rr(aCopy, bCopy)
         elif (i == "rra"):
-            reverse_rotate(a)
+            reverse_rotate(aCopy)
         elif (i == "rrb"):
-            reverse_rotate(b)
+            reverse_rotate(bCopy)
         elif (i == "rrr"):
-            rrr(a, b)
-        result = decide(a, b, moves, count + 1)
+            rrr(aCopy, bCopy)
+        result = decide(aCopy, bCopy, moves, count + 1)
         if result != None:
             result.append(i)
             if shortestCombination == None or len(result) < len(shortestCombination):
@@ -48,7 +52,7 @@ def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "
 
 
 def push_swap():
-    a = [1, 0]
+    a = [1, 0, -1]
     b = []
     print(decide(a, b))
 
