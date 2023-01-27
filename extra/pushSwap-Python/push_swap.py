@@ -4,9 +4,8 @@ from functions import *
 def checkSorted(a, b):
     if len(b) > 0:
         return False
-    i = 1
-    while (i - len(a)):
-        if i < i - 1:
+    for i in range(len(a)-1):
+        if a[i] > a[i+1]:
             return False
     return True
 
@@ -49,7 +48,7 @@ def decide(a, b, moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "
 
 
 def push_swap():
-    a = [0, 1]
+    a = [1, 0]
     b = []
     print(decide(a, b))
 
