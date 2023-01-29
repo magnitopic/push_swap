@@ -1,38 +1,40 @@
 # Basic algorithm
-def bestSum(target, numbers):
-    if target == 0:
-        return []
-    if target < 0:
-        return None
+""" def bestSum(targetSum, numbers):
+    if targetSum == 0: return []
+    if targetSum < 0: return None
+
     shortestCombination = None
-    for i in numbers:
-        result = bestSum(target - i, numbers)
-        if result != None:
-            result.append(i)
-            if shortestCombination == None or len(result) < len(shortestCombination):
-                shortestCombination = result
 
-    return shortestCombination
+    for num in numbers:
+        remainder = targetSum - num
+        remainderCombination = bestSum(remainder, numbers)
+        if remainderCombination is not None:
+            combination = [*remainderCombination, num]
+            if shortestCombination is None or len(combination) < len(shortestCombination):
+                shortestCombination = combination
 
-
-# Optimized algorithm
-""" def bestSum(target, numbers, memo={}):
-    if target in memo:
-        return memo[target]
-    if target == 0:
-        return []
-    if target < 0:
-        return None
-    shortestCombination = None
-    for i in numbers:
-        result = bestSum(target - i, numbers)
-        if result != None:
-            result.append(i)
-            if shortestCombination == None or len(result) < len(shortestCombination):
-                shortestCombination = result
-    memo[target] = shortestCombination
     return shortestCombination """
 
 
+# Optimized algorithm
+def bestSum(targetSum, numbers, memo={}):
+    if targetSum in memo: return memo[targetSum]
+    if targetSum == 0: return []
+    if targetSum < 0: return None
+
+    shortestCombination = None
+
+    for num in numbers:
+        remainder = targetSum - num
+        remainderCombination = bestSum(remainder, numbers, memo)
+        if remainderCombination is not None:
+            combination = [*remainderCombination, num]
+            if shortestCombination is None or len(combination) < len(shortestCombination):
+                shortestCombination = combination
+
+    memo[targetSum] = shortestCombination
+    return shortestCombination
+
+
 if __name__ == "__main__":
-    print(bestSum(8, [1, 4, 5]))
+    print(bestSum(100, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]))
