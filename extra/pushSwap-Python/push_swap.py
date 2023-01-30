@@ -16,22 +16,22 @@ def decide(a, b, count=0, memo={}):
     moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "r"]
     #if str(a) in memo:print(memo[a])
     if checkSorted(a, b):return []
-    if count > 7:return None
+    if count > 6:return None
     shortestCombination = None
     for i in moves:
-        aCopy = copy.deepcopy(a)
-        bCopy = copy.deepcopy(b)
-        if (i == "sa"):swap(aCopy)
-        elif (i == "sb"):swap(bCopy)
-        elif (i == "ss"):ss(aCopy, bCopy)
-        elif (i == "pa"):push(aCopy, bCopy)
-        elif (i == "pb"):push(bCopy, aCopy)
-        elif (i == "ra"):rotate(aCopy)
-        elif (i == "rb"):rotate(bCopy)
+        aCopy = a[:]
+        bCopy = b[:]
+        if (i == "sa"):sa(aCopy,bCopy)
+        elif (i == "sb"):sb(aCopy,bCopy)
+        elif (i == "ss"):ss(aCopy,bCopy)
+        elif (i == "pa"):pa(aCopy,bCopy)
+        elif (i == "pb"):pb(aCopy,bCopy)
+        elif (i == "ra"):ra(aCopy,bCopy)
+        elif (i == "rb"):rb(aCopy,bCopy)
         elif (i == "rr"):rr(aCopy, bCopy)
-        elif (i == "rra"):reverse_rotate(aCopy)
-        elif (i == "rrb"):reverse_rotate(bCopy)
-        elif (i == "rrr"):rrr(aCopy, bCopy)
+        elif (i == "rra"):rra(aCopy,bCopy)
+        elif (i == "rrb"):rrb(aCopy,bCopy)
+        elif (i == "rrr"):rrr(aCopy,bCopy)
         if not(a == aCopy and b == bCopy):
             remainderCombination = decide(aCopy, bCopy, count + 1)
             if remainderCombination is not None:
@@ -40,6 +40,7 @@ def decide(a, b, count=0, memo={}):
                     shortestCombination = combination
     #memo[str(a)] = str(shortestCombination)
     return shortestCombination
+
 
 
 def push_swap():
