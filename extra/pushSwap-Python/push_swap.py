@@ -1,54 +1,48 @@
-import copy
-
 from functions import *
 
 
-def checkSorted(a, b):
-    if len(b) > 0:
+def checkSorted(stackA, stackB):
+    if len(stackB) > 0:
         return False
-    for i in range(len(a)-1):
-        if a[i] > a[i+1]:
+    for i in range(len(stackA)-1):
+        if stackA[i] > stackA[i+1]:
             return False
     return True
 
-
-def decide(a, b, count=0, memo={}):
-    moves=["sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "r"]
-    #if str(a) in memo:print(memo[a])
-    if checkSorted(a, b):return []
-    if count > 6:return None
+def decide(a, b, count=0):
+    moves = ["sa", "sb", "ss", "pa", "pb",
+             "ra", "rb", "rr", "rra", "rrb", "rrr"]
+    if checkSorted(a, b): return []
+    if count > 6: return None
     shortestCombination = None
+    aCopy, bCopy = None, None
     for i in moves:
-        aCopy = a[:]
-        bCopy = b[:]
-        if (i == "sa"):sa(aCopy,bCopy)
-        elif (i == "sb"):sb(aCopy,bCopy)
-        elif (i == "ss"):ss(aCopy,bCopy)
-        elif (i == "pa"):pa(aCopy,bCopy)
-        elif (i == "pb"):pb(aCopy,bCopy)
-        elif (i == "ra"):ra(aCopy,bCopy)
-        elif (i == "rb"):rb(aCopy,bCopy)
-        elif (i == "rr"):rr(aCopy, bCopy)
-        elif (i == "rra"):rra(aCopy,bCopy)
-        elif (i == "rrb"):rrb(aCopy,bCopy)
-        elif (i == "rrr"):rrr(aCopy,bCopy)
-        if not(a == aCopy and b == bCopy):
-            remainderCombination = decide(aCopy, bCopy, count + 1)
-            if remainderCombination is not None:
-                combination = [*remainderCombination, i]
+        if (i == "sa"): aCopy, bCopy = sa(a[:], b[:])
+        elif (i == "sb"): aCopy, bCopy = sb(a[:], b[:])
+        elif (i == "ss"): aCopy, bCopy = ss(a[:], b[:])
+        elif (i == "pa"): aCopy, bCopy = pa(a[:], b[:])
+        elif (i == "pb"): aCopy, bCopy = pb(a[:], b[:])
+        elif (i == "ra"): aCopy, bCopy = ra(a[:], b[:])
+        elif (i == "rb"): aCopy, bCopy = rb(a[:], b[:])
+        elif (i == "rr"): aCopy, bCopy = rr(a[:], b[:])
+        elif (i == "rra"): aCopy, bCopy = rra(a[:], b[:])
+        elif (i == "rrb"): aCopy, bCopy = rrb(a[:], b[:])
+        elif (i == "rrr"): aCopy, bCopy = rrr(a[:], b[:])
+        if a != aCopy or b != bCopy:
+            sonCombination = decide(aCopy, bCopy, count + 1)
+            if sonCombination is not None:
+                combination = [i, *sonCombination]
                 if shortestCombination is None or len(combination) < len(shortestCombination):
                     shortestCombination = combination
-    #memo[str(a)] = str(shortestCombination)
-    return shortestCombination
-
-
-
-def push_swap():
-    a = [2, 0, -1]
-    b = []
-    for i in decide(a, b):
-        print(i)
+                    return shortestCombination
 
 
 if __name__ == "__main__":
-    push_swap()
+    a_inicial = [2, 6, 1, 8, 7, 10]
+    b_inicial = []
+    resultado = decide(a_inicial, b_inicial)
+    if resultado == None:
+        print(None)
+    else:
+        for i in resultado:
+            print(i)
