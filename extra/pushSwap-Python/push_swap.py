@@ -34,11 +34,11 @@ def decide(a, b, count=0):
                 combination = [i, *sonCombination]
                 if shortestCombination is None or len(combination) < len(shortestCombination):
                     shortestCombination = combination
-                    return shortestCombination
+    return shortestCombination
 
 
 if __name__ == "__main__":
-    a_inicial = [2, 6, 1, 8, 7, 10]
+    a_inicial = [1, 3, 4, 2]
     b_inicial = []
     resultado = decide(a_inicial, b_inicial)
     if resultado == None:
