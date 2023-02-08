@@ -14,7 +14,7 @@ def decide(a, b, count=0, memo={}):
              "ra", "rb", "rr", "rra", "rrb", "rrr"]
     if checkSorted(a, b): return []
     if str(a+b) in memo: return memo[str(a+b)]
-    if count > 994: return None
+    if count > 900: return None
     shortestCombination = None
     aCopy, bCopy = None, None
     for i in moves:
@@ -40,7 +40,8 @@ def decide(a, b, count=0, memo={}):
 
 
 if __name__ == "__main__":
-    a_inicial = [1, 3, 4, 2]
+    a = "1 3 2 4"
+    a_inicial =[int(x) for x in a.split(" ")]
     b_inicial = []
     resultado = decide(a_inicial, b_inicial)
     if resultado == None:
