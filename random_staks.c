@@ -46,3 +46,14 @@ int	*random_stack(int amount)
 		nums[i++] -= 101;
 	return (nums);
 }
+
+int	main(void)
+{
+	int *nums = random_stack(10);
+	while (*nums)
+	{
+		ft_printf("%d ", *nums);
+		nums++;
+	}
+	return (0);
+}
