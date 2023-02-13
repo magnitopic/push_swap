@@ -9,6 +9,7 @@ def checkSorted(stackA, stackB):
             return False
     return True
 
+
 def decide(a, b, count=0, memo={}):
     moves = ["sa", "sb", "ss", "pa", "pb",
              "ra", "rb", "rr", "rra", "rrb", "rrr"]
@@ -35,12 +36,13 @@ def decide(a, b, count=0, memo={}):
                 combination = [i, *sonCombination]
                 if shortestCombination is None or len(combination) < len(shortestCombination):
                     shortestCombination = combination
-    memo[str(a+b)] = shortestCombination
+    # Only save values that have a solution
+    if shortestCombination!=None: memo[str(a+b)] = shortestCombination
     return shortestCombination
 
 
 if __name__ == "__main__":
-    a = "1 3 2 4"
+    a = "2 1 3 6 5 8"
     a_inicial =[int(x) for x in a.split(" ")]
     b_inicial = []
     resultado = decide(a_inicial, b_inicial)
