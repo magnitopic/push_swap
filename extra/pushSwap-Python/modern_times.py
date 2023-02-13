@@ -33,25 +33,6 @@ def algoritmo_LIS(arr):
 
     return list(reversed(seq))
 
-
-def push_swap(a):
-    b = []
-    lis = algoritmo_LIS(a)
-    # pasar al stack b los valores del LIS
-    for i in lis:
-        if a.index(i) < len(a)/2:
-            for j in range(a.index(i)):
-                print("ra")
-                ra(a, b)
-        else:
-            for j in range(len(a)-a.index(i)):
-                print("rra")
-                rra(a, b)
-        print("pb")
-        b.append(a.pop(0))
-    print(a, b)
-
-
 def getValorA(a, b):
     values = []
     value = None
@@ -76,6 +57,27 @@ def getSymbol(value, len):
     else:
         return value - len
 
+def sendLis(a, b, lis):
+    for i in lis:
+        if a.index(i) < len(a)/2:
+            for j in range(a.index(i)):
+                print("ra")
+                ra(a, b)
+        else:
+            for j in range(len(a)-a.index(i)):
+                print("rra")
+                rra(a, b)
+        print("pb")
+        pb(a,b)
+
+def push_swap(a):
+    b = []
+    # get lis elements
+    while len(a) > 0:
+        lis = algoritmo_LIS(a)
+        # send lis values to stack b
+        sendLis(a, b, lis)
+        print(a, b)
 
 if __name__ == "__main__":
     """ a = [1, 2, 3, 4, 5, 6]
