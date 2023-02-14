@@ -35,10 +35,9 @@ def algoritmo_LIS(arr):
 
 def getValorA(a, b):
     values = []
-    value = None
     for i in a:
         values.append(getSymbol(a.index(i), len(a)))
-    return value
+    return values
 
 
 def getValorB(a, b):
