@@ -6,63 +6,24 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/01/01 20:02:10 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:05:22 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_swap(int *stack_a, int a_size)
+#include <stdio.h>
+/* 
+void	swap(t_list **a)
 {
-	int	aux;
-
-	if (a_size <= 1)
-		return ;
-	aux = stack_a[0];
-	stack_a[0] = stack_a[1];
-	stack_a[1] = aux;
-}
-
-void	pa(int *stack_a, int *a_size, int *stack_b, int b_size)
-{
-	int	i;
-
-	if (b_size < 1)
-		return ;
-	*a_size = *a_size + 1;
-	i = *a_size;
-	while (i >= 0)
+	if (ft_lstsize(a) > 1)
 	{
-		stack_a[i + 1] = stack_a[i];
-		i--;
-	}
-	stack_a[0] = stack_b[0];
-	while (i < b_size)
-	{
-		stack_b[i] = stack_b[i + 1];
-		i++;
+		a* -> content;
 	}
 }
 
-void pb(int *stack_b, int b_size, int *stack_a, int *a_size)
+void	push(t_list **a, t_list **b)
 {
-	int	i;
-
-	if (b_size < 1)
-		return ;
-	*a_size = *a_size + 1;
-	i = *a_size;
-	while (i >= 0)
-	{
-		stack_a[i + 1] = stack_a[i];
-		i--;
-	}
-	stack_a[0] = stack_b[0];
-	while (i < b_size)
-	{
-		stack_b[i] = stack_b[i + 1];
-		i++;
-	}
+	
 }
 
 void	ft_rotate(int *stack_a, int *a_size)
@@ -97,6 +58,16 @@ void	ft_reverse_rotate(int *stack_a, int *a_size)
 		i--;
 	}
 	stack_a[0] = aux;
+}
+ */
+int main(void)
+{
+	t_list **listita;
+
+	listita = malloc(sizeof(t_list) * 2);
+	
+	*listita = ft_lstnew("General Kenobi");
+	printf("%s", **listita -> content  );
 }
 
 /* int	main(void)
