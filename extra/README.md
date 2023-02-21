@@ -5,7 +5,13 @@ First I'd need to understand what sort of algorithm I'm going to use. So I take 
 Next I'll need to program that algorithm in Python, just so I don't have to bother with handling memory.
 Finally do the project in C and check that I have every thing the subject asks of me.
 
-## Part 1: Dynamic programing
+
+-	pushSwap-python
+	-	dynamicProgramming.py → Implementation of a possible solution using memoization. Works fine for 2-7 numbers but wait times get too big if more numbers are introduced.
+	-	modern_times.py → Current solution
+-	pythonTesting → Exercise examples for dynamic programing implementation
+
+# Dynamic programing
 
 These exercises are from [this YouTube video](https://www.youtube.com/watch?v=oBt53YbR9Kk) by [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ) on dynamic programing.
 
@@ -26,3 +32,8 @@ These exercises are from [this YouTube video](https://www.youtube.com/watch?v=oB
 
 -   `allConstruct.py` - given a string and an array of strings, you must return a matrix containing all of the ways the first string can be constructed by the strings in the array. You can repeat the same string as much as you want
 
+## Conclusion on dynamic programing
+
+Although dynamic programming is an incredibly powerful tool which can be used to solve many algorithmic challenges, it's not not a good option for the PushSwap project.
+
+I don't doubt it can be done using dynamic programming but it is too complex and there are better options that are more suited for the task.
