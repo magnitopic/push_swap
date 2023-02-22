@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/22 18:48:02 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:55:00 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,7 @@ void	ft_reverse_rotate(int *stack_a, int *a_size)
 	stack_a[0] = aux;
 }
  */
-int main(int argc, char **argv)
-{
-	t_list	*test_list;
-	t_list	*node;
-	int	i;
 
-	i = 0;
-	char *string = argv[1];
-	test_list = ft_lstnew(&string[i++]);
-	while (i < (int)ft_strlen(string))
-	{
-		ft_lstadd_back(&test_list, ft_lstnew(&string[i++]));
-	}
-	ft_lstprint_char(test_list);
-}
 
 /* int	main(void)
 {
