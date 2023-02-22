@@ -6,11 +6,11 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/01/31 15:05:22 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:48:02 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 #include <stdio.h>
 /* 
 void	swap(t_list **a)
@@ -60,14 +60,20 @@ void	ft_reverse_rotate(int *stack_a, int *a_size)
 	stack_a[0] = aux;
 }
  */
-int main(void)
+int main(int argc, char **argv)
 {
-	t_list **listita;
+	t_list	*test_list;
+	t_list	*node;
+	int	i;
 
-	listita = malloc(sizeof(t_list) * 2);
-	
-	*listita = ft_lstnew("General Kenobi");
-	printf("%s", **listita -> content  );
+	i = 0;
+	char *string = argv[1];
+	test_list = ft_lstnew(&string[i++]);
+	while (i < (int)ft_strlen(string))
+	{
+		ft_lstadd_back(&test_list, ft_lstnew(&string[i++]));
+	}
+	ft_lstprint_char(test_list);
 }
 
 /* int	main(void)
