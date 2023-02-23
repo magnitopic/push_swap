@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_actions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/23 18:22:10 by alaparic         ###   ########.fr       */
+/*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
+/*   Updated: 2023/02/23 18:22:24 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
+
+char	*swap(t_list *stack1, t_list *stack2)
+{
+	t_list	aux;
+
+	aux = stack1[ft_lstsize(stack1)-1];
+	return ("sa");
+}
 
 int	main(int argc, char **argv)
 {
