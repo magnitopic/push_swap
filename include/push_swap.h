@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/21 17:30:38 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:07:49 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
-int		*random_stack(int amount);
-void	ft_swap(int *stack_a, int a_size);
-void	pa(int *stack_a, int *a_size, int *stack_b, int b_size);
-void	pb(int *stack_b, int b_size, int *stack_a, int *a_size);
-void	ft_rotate(int *stack_a, int *a_size);
-void	ft_reverse_rotate(int *stack_a, int *a_size);
-void	print_stacks(int *stack_a, int a_size, int *stack_b, int b_size);
+// Operations
+char	*sa(t_list *stackA, t_list *stackB);
+char	*sb(t_list *stackA, t_list *stackB);
+
 
 #endif

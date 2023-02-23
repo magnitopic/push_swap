@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_actions.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/23 18:22:24 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:46:14 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-char	*swap(t_list *stack1, t_list *stack2)
+char	*sa(t_list *stack_a, t_list *stack_b)
 {
 	t_list	aux;
 
-	aux = stack1[ft_lstsize(stack1)-1];
+	aux = stack_a[ft_lstsize(stack_a) - 1];
+	
 	return ("sa");
 }
 
-int	main(int argc, char **argv)
+char	*sb(t_list *stack_a, t_list *stack_b)
 {
-	t_list	*listita;
-	int		i;
-	int		*aux;
+	t_list	aux;
 
-	i = 1;
-	aux = malloc(sizeof(int));
-	*aux = ft_atoi(argv[i++]);
-	listita = ft_lstnew(&*aux);
-	while (i < argc)
-	{
-		aux = malloc(sizeof(int));
-		*aux = ft_atoi(argv[i++]);
-		ft_lstadd_back(&listita, ft_lstnew(&*aux));
-	}
-	ft_lstprint_int(listita);
+	aux = stack_b[ft_lstsize(stack_b)-1];
+	return ("sb");
 }
