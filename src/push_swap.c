@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/22 19:18:36 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:28:29 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 int main(int argc, char **argv)
 {
-	t_list	*test_list;
-	t_list	*node;
-	int	i;
-	int *string;
+	t_list *test_list;
+	int i;
+	int	aux;
 
-	i = 0;
-	string = ft_calloc(ft_strlen)
-	while (i < (int)ft_strlen(argv[1]))
+	i = 1;
+	/* ft_printf("%d", i); */
+	aux = ft_atoi(argv[i++]);
+	test_list = ft_lstnew(&aux);
+	while (i < argc)
 	{
-		string
+		ft_printf("%d ",  *(int *)(test_list -> content));
+		ft_printf("aux: %d\n", i);
+		aux = ft_atoi(argv[i++]);
+		ft_lstadd_back(&test_list, ft_lstnew(&aux));
 	}
-	= argv[1];
-	test_list = ft_lstnew(&ft_atoi(string[i++]));
-	while (i < (int)ft_strlen(string))
-	{
-		ft_lstadd_back(&test_list, ft_lstnew(&ft_atoi(string[i++]));
-	}
-	ft_lstprint_char(test_list);
+	ft_printf("%d ",  *(int *)(test_list -> content));
+	ft_lstprint_int(test_list);
 }
