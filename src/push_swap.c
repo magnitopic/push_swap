@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 17:39:36 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:18:58 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	main(int argc, char **argv)
 	}
 	ft_lstprint_int(stack_a);
 	ft_lstprint_int(stack_b);
-	pa(&stack_a, &stack_b);
+	ra(&stack_a, &stack_b);
 	ft_printf("\n");
 	ft_lstprint_int(stack_a);
 	ft_lstprint_int(stack_b);
+	ft_printf("\n");
 }
