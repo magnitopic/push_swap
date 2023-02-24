@@ -1,48 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 17:42:00 by alaparic         ###   ########.fr       */
+/*   Created: 2023/02/24 17:12:13 by alaparic          #+#    #+#             */
+/*   Updated: 2023/02/24 17:41:48 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-char	*sa(t_list **stack_a, t_list **stack_b)
+char	*pa(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*aux;
 
-	(void)stack_b;
-	if (ft_lstsize(stack_a) <= 1)
-		return ("");
-	aux = *stack_a;
-	*stack_a = (*stack_a)->next;
-	aux->next = (*stack_a)->next;
-	(*stack_a)->next = aux;
-	return ("sa");
-}
-
-char	*sb(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*aux;
-
-	(void)stack_a;
-	if (ft_lstsize(stack_b) <= 1)
+	if (ft_lstsize(*stack_a) == 0)
 		return ("");
 	aux = *stack_b;
-	*stack_b = (*stack_b)->next;
-	aux->next = (*stack_b)->next;
+	*stack_b = *stack_a;
+	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = aux;
-	return ("sb");
+	return ("pa");
 }
 
-char	*ss(t_list **stack_a, t_list **stack_b)
+char	*pb(t_list **stack_a, t_list **stack_b)
 {
-	sa(stack_a, stack_b);
-	sb(stack_a, stack_b);
-	return ("ss");
+	t_list	*aux;
+
+	if (ft_lstsize(*stack_b) == 0)
+		return ("");
+	aux = *stack_a;
+	*stack_a = *stack_b;
+	*stack_b = (*stack_b)->next;
+	(*stack_a)->next = aux;
+	return ("pb");
 }
