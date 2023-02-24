@@ -1,7 +1,3 @@
-*.out
-push_swap
 .vscode
-test.c
-push_swap.a
 .DS_Store
 __pycache__
