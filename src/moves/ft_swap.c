@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 17:08:04 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:10:31 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ char	*sb(t_list **stack_a, t_list **stack_b)
 	aux->next = (*stack_b)->next;
 	(*stack_b)->next = aux;
 	return ("sb");
+}
+
+char	*ss(t_list **stack_a, t_list **stack_b)
+{
+	sa(stack_a, stack_b);
+	sb(stack_a, stack_b);
+	return ("ss");
 }

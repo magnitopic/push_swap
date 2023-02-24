@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 17:07:11 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:11:21 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 // Operations
 char	*sa(t_list **stack_a, t_list **stack_b);
 char	*sb(t_list **stack_a, t_list **stack_b);
-
+char	*ss(t_list **stack_a, t_list **stack_b);
 
 #endif
