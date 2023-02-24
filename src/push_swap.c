@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 16:07:10 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:06:52 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	int		*aux;
 
 	i = 1;
+	stack_b = NULL;
 	aux = malloc(sizeof(int));
 	*aux = ft_atoi(argv[i++]);
 	stack_a = ft_lstnew(&*aux);
@@ -30,7 +31,7 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(&stack_a, ft_lstnew(&*aux));
 	}
 	ft_lstprint_int(stack_a);
-	stack_a = sa(stack_a, stack_b);
+	sa(&stack_a, &stack_b);
 	ft_printf("\n");
 	ft_lstprint_int(stack_a);
 	/* ft_printf("\n%s\n", sa(stack_a, stack_b));
