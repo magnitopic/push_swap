@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:13 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 17:41:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:23:24 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*pa(t_list **stack_a, t_list **stack_b)
 	*stack_b = *stack_a;
 	*stack_a = (*stack_a)->next;
 	(*stack_b)->next = aux;
-	return ("pa");
+	return ("pa\n");
 }
 
 char	*pb(t_list **stack_a, t_list **stack_b)
@@ -35,5 +35,5 @@ char	*pb(t_list **stack_a, t_list **stack_b)
 	*stack_a = *stack_b;
 	*stack_b = (*stack_b)->next;
 	(*stack_a)->next = aux;
-	return ("pb");
+	return ("pb\n");
 }
