@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/25 15:24:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:08:53 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ char	*rr(t_list **stack_a, t_list **stack_b);
 char	*rra(t_list **stack_a, t_list **stack_b);
 char	*rrb(t_list **stack_a, t_list **stack_b);
 char	*rrr(t_list **stack_a, t_list **stack_b);
+
+// SRC
+int		ft_issorted(t_list *stack_a, t_list *stack_b);
 
 #endif

@@ -2,6 +2,7 @@
 NAME				=	push_swap
 PUSHSWAP			=	push_swap.a
 PUSHSWAP_SRC		=	src/push_swap.c \
+						src/helpers.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
@@ -37,8 +38,7 @@ $(LIBFT):
 			@make -C libft bonus
 
 $(NAME):			$(OBJS)
-					@ar rcs $(PUSHSWAP) $(OBJS)
-					$(CC) $(CFLAGS) $(PUSHSWAP) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
+					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
 clean:
 			@$(RM) $(PUSHSWAP) $(OBJS)
