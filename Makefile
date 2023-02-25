@@ -1,10 +1,12 @@
 # push_swap
 NAME				=	push_swap
 PUSHSWAP			=	push_swap.a
-PUSHSWAP_SRC		=	push_swap.c \
-						print_stacks.c \
-						ft_actions.c \
-						random_staks.c \
+PUSHSWAP_SRC		=	src/push_swap.c \
+						src/moves/ft_push.c \
+						src/moves/ft_swap.c \
+						src/moves/ft_rotate.c \
+						src/moves/ft_reverse_rotate.c
+
 OBJS			= $(PUSHSWAP_SRC:.c=.o)
 
 # Libft
@@ -35,12 +37,11 @@ $(LIBFT):
 			@make -C libft bonus
 
 $(NAME):			$(OBJS)
-					ar rcs $(PUSHSWAP) $(OBJS)
-#					random_stacks.c	is teporary
-					$(CC) $(CFLAGS) $(PUSHSWAP) random_staks.c $(LIBFT_SRC)$(LIBFT) -o $(NAME)
+					@ar rcs $(PUSHSWAP) $(OBJS)
+					$(CC) $(CFLAGS) $(PUSHSWAP) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
 clean:
-			@$(RM) $(PUSHSWAP) $(PUSHSWAP)
+			@$(RM) $(PUSHSWAP) $(OBJS)
 			@printf "\n$(BLUE)==> $(RED)Removed Push_swap 🗑️\n$(RESET)"
 
 fclean:		clean
