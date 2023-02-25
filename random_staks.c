@@ -6,11 +6,12 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:23:34 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/24 17:22:21 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/24 21:47:45 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+# include <time.h>
 
 static int	ft_contains(int *array, int value)
 {
