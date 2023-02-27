@@ -1,6 +1,9 @@
 # push_swap
 NAME				=	push_swap
 PUSHSWAP_SRC		=	src/push_swap.c \
+						src/dictionary/dict_new.c \
+						src/dictionary/dict_size.c \
+						src/dictionary/dict_add_back.c \
 						src/helpers.c \
 						src/short_sorter.c \
 						src/moves/ft_push.c \
