@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/27 16:43:51 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:19:36 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_entry
 t_entry	*dict_new(t_list *stack_a, t_list *stack_b, char *moves);
 int		dict_size(t_entry *dictionary);
 void	dict_add_back(t_entry **lst, t_entry *new);
+t_entry	*dict_get(t_entry *dict, int pos);
 
 // Moves functions
 char	*sa(t_list **stack_a, t_list **stack_b);
