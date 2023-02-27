@@ -1,13 +1,11 @@
 # push_swap
 NAME				=	push_swap
-PUSHSWAP			=	push_swap.a
 PUSHSWAP_SRC		=	src/push_swap.c \
 						src/helpers.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
 						src/moves/ft_reverse_rotate.c
-
 OBJS			= $(PUSHSWAP_SRC:.c=.o)
 
 # Libft
@@ -41,7 +39,7 @@ $(NAME):			$(OBJS)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
 clean:
-			@$(RM) $(PUSHSWAP) $(OBJS)
+			@$(RM) $(NAME) $(OBJS)
 			@printf "\n$(BLUE)==> $(RED)Removed Push_swap 🗑️\n$(RESET)"
 
 fclean:		clean
