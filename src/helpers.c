@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:03:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/28 17:14:22 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:10:57 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ int	ft_issorted(t_list *stack_a, t_list *stack_b)
 		first_value = *(int *)ft_get(stack_a, i)->content;
 		second_value = *(int *)ft_get(stack_a, i + 1)->content;
 		if (first_value > second_value)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_is_in_function(t_entry *dict, t_list *stack_a, t_list *stack_b)
+{
+	int	i;
+
+	i = 0;
+	while (i < dict_size(dict))
+	{
+		ft_printf("i: %d\nvalue: %d\n",i ,ft_lstcompare(dict_get(dict, i)->stack_a, stack_a));
+		ft_lstprint_int(dict_get(dict, i)->stack_a);
+		ft_lstprint_int(stack_a);
+		if (ft_lstcompare(dict_get(dict, i)->stack_a, stack_a)
+			&& ft_lstcompare(dict_get(dict, i)->stack_b, stack_b))
 			return (0);
 		i++;
 	}

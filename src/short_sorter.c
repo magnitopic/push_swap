@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/02/28 17:16:07 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:19:26 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*busca(t_list *stack_a, t_list *stack_b)
 
 	j = 0;
 	dictionary = dict_new(stack_a, stack_b, "");
-	while (j < dict_size(dictionary))
+	while (1)
 	{
 		i = 0;
 		while (i < 11)
@@ -57,8 +57,16 @@ char	*busca(t_list *stack_a, t_list *stack_b)
 			else if (i == 10)
 				move = rrr(&stack_a_cpy, &stack_b_cpy);
 			i++;
-			if (ft_strlen(move))
+			if (ft_is_in_function(dictionary, stack_a_cpy, stack_b_cpy))
 				dict_add_back(&dictionary, dict_new(stack_a_cpy, stack_b_cpy, ft_strjoin(dict_get(dictionary, j)->moves, move)));
+		}
+		ft_printf("===================");
+		i = 0;
+		while (i < dict_size(dictionary))
+		{
+			ft_lstprint_int(dict_get(dictionary, i)->stack_a);
+			ft_lstprint_int(dict_get(dictionary, i)->stack_b);
+			i++;
 		}
 		j++;
 	}
