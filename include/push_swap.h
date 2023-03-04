@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/02 16:11:40 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:35:50 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_entry	*dict_new(t_list *stack_a, t_list *stack_b, char *moves);
 int		dict_size(t_entry *dictionary);
 void	dict_add_back(t_entry **lst, t_entry *new);
 t_entry	*dict_get(t_entry *dict, int pos);
-int	ft_is_in_function(t_entry *dict, t_list *stack_a, t_list *stack_b);
+int		ft_is_in_function(t_entry *dict, t_list *stack_a, t_list *stack_b);
 
 // Moves functions
 char	*sa(t_list **stack_a, t_list **stack_b);
@@ -47,5 +47,6 @@ char	*rrr(t_list **stack_a, t_list **stack_b);
 // SRC
 int		ft_issorted(t_list *stack_a, t_list *stack_b);
 char	*busca(t_list *stack_a, t_list *stack_b);
+char	*new_values(t_entry *dictionary, int j);
 
 #endif

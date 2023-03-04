@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/04 17:35:01 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:05:56 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 		*aux = ft_atoi(argv[i++]);
 		ft_lstadd_back(&stack_a, ft_lstnew(&*aux));
 	}
+	if (ft_issorted(stack_a, stack_b))
+		return (0);
 	if (argc < 7)
 		ft_printf("%s", busca(stack_a, stack_b));
 	return (0);

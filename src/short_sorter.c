@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/04 17:14:12 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:48:25 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ char	*busca(t_list *stack_a, t_list *stack_b)
 	t_entry	*dictionary;
 	int		i;
 	int		j;
-	int		k;
 	t_list	*stack_a_cpy;
 	t_list	*stack_b_cpy;
 	char	*move;
-	//char	*(*moves[11])(t_list stack_a, t_list stack_b);
 
 	j = 0;
-	k = 0;
 	dictionary = dict_new(stack_a, stack_b, "");
 	while (1)
 	{
@@ -32,8 +29,8 @@ char	*busca(t_list *stack_a, t_list *stack_b)
 		while (i < 11)
 		{
 			move = "";
-			stack_a_cpy = ft_lstcpy(dict_get(dictionary, k)->stack_a);
-			stack_b_cpy = ft_lstcpy(dict_get(dictionary, k)->stack_b);
+			stack_a_cpy = ft_lstcpy(dict_get(dictionary, j)->stack_a);
+			stack_b_cpy = ft_lstcpy(dict_get(dictionary, j)->stack_b);
 			if (i == 0)
 				move = sa(&stack_a_cpy, &stack_b_cpy);
 			else if (i == 1)
@@ -56,14 +53,14 @@ char	*busca(t_list *stack_a, t_list *stack_b)
 				move = rrb(&stack_a_cpy, &stack_b_cpy);
 			else if (i == 10)
 				move = rrr(&stack_a_cpy, &stack_b_cpy);
-			if (ft_is_in_function(dictionary, stack_a_cpy, stack_b_cpy) && ft_strlen(move))
-				dict_add_back(&dictionary, dict_new(stack_a_cpy, stack_b_cpy, ft_strjoin(dict_get(dictionary, k)->moves, move)));
+			if (ft_is_in_function(dictionary, stack_a_cpy, stack_b_cpy)
+				&& ft_strlen(move))
+				dict_add_back(&dictionary, dict_new(stack_a_cpy, stack_b_cpy, ft_strjoin(dict_get(dictionary, j)->moves, move)));
 			if (ft_issorted(stack_a_cpy, stack_b_cpy))
 				return (dict_get(dictionary, dict_size(dictionary) - 1)->moves);
 			i++;
-			j++;
 		}
-		k++;
+		j++;
 	}
 	return ("");
 }
