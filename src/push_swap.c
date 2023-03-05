@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/04 18:05:56 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:56:57 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc < 7)
 		ft_printf("%s", busca(stack_a, stack_b));
+	else
+		ft_printf("%s", modern_times(stack_a, stack_b));
 	return (0);
 }
