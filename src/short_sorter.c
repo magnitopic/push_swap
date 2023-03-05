@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/04 18:48:25 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/05 12:31:24 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ char	*busca(t_list *stack_a, t_list *stack_b)
 				move = rrb(&stack_a_cpy, &stack_b_cpy);
 			else if (i == 10)
 				move = rrr(&stack_a_cpy, &stack_b_cpy);
-			if (ft_is_in_function(dictionary, stack_a_cpy, stack_b_cpy)
-				&& ft_strlen(move))
+			if (ft_strlen(move)
+				&& !ft_is_in_list(dictionary, stack_a_cpy, stack_b_cpy))
 				dict_add_back(&dictionary, dict_new(stack_a_cpy, stack_b_cpy, ft_strjoin(dict_get(dictionary, j)->moves, move)));
 			if (ft_issorted(stack_a_cpy, stack_b_cpy))
 				return (dict_get(dictionary, dict_size(dictionary) - 1)->moves);

@@ -6,11 +6,17 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:03:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/04 17:33:50 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/05 12:22:08 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+/**
+ * Function to check wether the stacks are sorted.
+ * For that to be true stack_b must be empty and
+ * stack_a must have all values from smallest to largest
+ */
 
 int	ft_issorted(t_list *stack_a, t_list *stack_b)
 {
@@ -34,7 +40,14 @@ int	ft_issorted(t_list *stack_a, t_list *stack_b)
 	return (1);
 }
 
-int	ft_is_in_function(t_entry *dict, t_list *stack_a, t_list *stack_b)
+/**
+ * Recibes the dictionary and the two stacks.
+ * Checks thru all entries in the dictionary comparing
+ * them to stack_a and stack_b.
+ * If the stack values are already in the dictionary 1 is returned, otherwise 0.
+ */
+
+int	ft_is_in_list(t_entry *dict, t_list *stack_a, t_list *stack_b)
 {
 	int	i;
 
@@ -43,8 +56,8 @@ int	ft_is_in_function(t_entry *dict, t_list *stack_a, t_list *stack_b)
 	{
 		if (ft_lstcompare(dict_get(dict, i)->stack_a, stack_a)
 			&& ft_lstcompare(dict_get(dict, i)->stack_b, stack_b))
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
