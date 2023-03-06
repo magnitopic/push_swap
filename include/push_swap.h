@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/05 15:56:08 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:35:04 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int		ft_issorted(t_list *stack_a, t_list *stack_b);
 char	*busca(t_list *stack_a, t_list *stack_b);
 char	*new_values(t_entry *dictionary, int j);
 char	*modern_times(t_list *stack_a, t_list *stack_b);
+int		*count_min_steps(t_list *stack_a, t_list *stack_b);
+int		count_steps_a(t_list *stack_a);
 
 #endif
