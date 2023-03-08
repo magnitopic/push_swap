@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:12:22 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/08 15:50:32 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:54:21 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,27 @@ int	count_steps_b(t_list *stack_a, t_list *stack_b)
 	int	i;
 	int	j;
 	int	*n_steps;
+	int	maxinf;
 
-	n_steps = ft_calloc(lst_len, sizeof(int));
+	n_steps = ft_calloc(ft_lstsize(stack_a), sizeof(int));
 	while (i < ft_lstsize(stack_a))
 	{
+		
+		/* maxinf = ft_lstmin(stack_b);
 		while (j < ft_lstsize(stack_b))
 		{
 			if ((int *)ft_get(stack_a, i)->content
-				< (int *)ft_get(stack_b, j)->contetn)
+				< (int *)ft_get(stack_b, j)->content)
 			{
-				if (j < ft_lstsize(stack_b) / 2)
-					n_steps[j] = j;
-				else
-					n_steps[j] = -(ft_lstsize(stack_a) - j);
+				if ((int *)ft_get(stack_b, j)->content
+					< (int *)ft_get(stack_a, i)->content
+					&& (int *)ft_get(stack_b, j)->content > maxinf)
+					maxinf = (int *)ft_get(stack_b, j)->content;
 			}
 		}
+		if (i < (lst_len / 2))
+			n_steps[i] = i;
+		else
+			n_steps[i] = -(lst_len - i); */
 	}
 }
