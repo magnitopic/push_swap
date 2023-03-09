@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/06 15:35:04 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:28:01 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,56 @@
 
 # include "../libft/libft.h"
 
+// struct for stacks
+typedef struct s_stack
+{
+	int				value;
+	int				pasos_a;
+	int				pasos_b;
+	struct s_stack	*next;
+}	t_stack;
+
 // struct for dictionary
 typedef struct s_entry
 {
-	t_list			*stack_a;
-	t_list			*stack_b;
+	t_stack			*stack_a;
+	t_stack			*stack_b;
 	char			*moves;
 	struct s_entry	*next;
 }	t_entry;
 
 // dictionary functions
-t_entry	*dict_new(t_list *stack_a, t_list *stack_b, char *moves);
+t_entry	*dict_new(t_stack *stack_a, t_stack *stack_b, char *moves);
 int		dict_size(t_entry *dictionary);
 void	dict_add_back(t_entry **lst, t_entry *new);
 t_entry	*dict_get(t_entry *dict, int pos);
-int		ft_is_in_list(t_entry *dict, t_list *stack_a, t_list *stack_b);
+int		ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b);
+
+// stack functions
+t_stack	*get(t_stack *stack, int pos);
+t_stack	*add_new(t_stack *stack, int value);
+int		stack_size(t_stack *stack);
+
 
 // Moves functions
-char	*sa(t_list **stack_a, t_list **stack_b);
-char	*sb(t_list **stack_a, t_list **stack_b);
-char	*ss(t_list **stack_a, t_list **stack_b);
-char	*pa(t_list **stack_a, t_list **stack_b);
-char	*pb(t_list **stack_a, t_list **stack_b);
-char	*ra(t_list **stack_a, t_list **stack_b);
-char	*rb(t_list **stack_a, t_list **stack_b);
-char	*rr(t_list **stack_a, t_list **stack_b);
-char	*rra(t_list **stack_a, t_list **stack_b);
-char	*rrb(t_list **stack_a, t_list **stack_b);
-char	*rrr(t_list **stack_a, t_list **stack_b);
+char	*sa(t_stack **stack_a, t_stack **stack_b);
+char	*sb(t_stack **stack_a, t_stack **stack_b);
+char	*ss(t_stack **stack_a, t_stack **stack_b);
+char	*pa(t_stack **stack_a, t_stack **stack_b);
+char	*pb(t_stack **stack_a, t_stack **stack_b);
+char	*ra(t_stack **stack_a, t_stack **stack_b);
+char	*rb(t_stack **stack_a, t_stack **stack_b);
+char	*rr(t_stack **stack_a, t_stack **stack_b);
+char	*rra(t_stack **stack_a, t_stack **stack_b);
+char	*rrb(t_stack **stack_a, t_stack **stack_b);
+char	*rrr(t_stack **stack_a, t_stack **stack_b);
 
 // SRC
-int		ft_issorted(t_list *stack_a, t_list *stack_b);
-char	*busca(t_list *stack_a, t_list *stack_b);
+/* int		ft_issorted(t_stack *stack_a, t_stack *stack_b);
+char	*busca(t_stack *stack_a, t_stack *stack_b);
 char	*new_values(t_entry *dictionary, int j);
-char	*modern_times(t_list *stack_a, t_list *stack_b);
-int		*count_min_steps(t_list *stack_a, t_list *stack_b);
-int		count_steps_a(t_list *stack_a);
+char	*modern_times(t_stack *stack_a, t_stack *stack_b);
+int		*count_min_steps(t_stack *stack_a, t_stack *stack_b);
+int		count_steps_a(t_stack *stack_a); */
 
 #endif

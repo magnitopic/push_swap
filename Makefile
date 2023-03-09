@@ -1,17 +1,21 @@
 # push_swap
 NAME				=	push_swap
 PUSHSWAP_SRC		=	src/push_swap.c \
-						src/helpers.c \
-						src/short_sorter.c \
-						src/modern_times.c \
-						src/dictionary/dict_new.c \
-						src/dictionary/dict_size.c \
-						src/dictionary/dict_add_back.c \
-						src/dictionary/dict_get.c \
+						src/stack_functions/add_new.c \
+						src/stack_functions/get.c \
+						src/stack_functions/stack_size.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
 						src/moves/ft_reverse_rotate.c
+#src/modern_times.c \
+#src/short_sorter.c \
+#src/helpers.c \
+#src/dictionary/dict_new.c \
+#src/dictionary/dict_size.c \
+#src/dictionary/dict_add_back.c \
+#src/dictionary/dict_get.c \
+
 OBJS			= $(PUSHSWAP_SRC:.c=.o)
 
 # Libft

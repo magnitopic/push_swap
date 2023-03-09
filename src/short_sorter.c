@@ -6,19 +6,19 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/05 12:31:24 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:23:53 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-char	*busca(t_list *stack_a, t_list *stack_b)
+char	*busca(t_stack *stack_a, t_stack *stack_b)
 {
 	t_entry	*dictionary;
 	int		i;
 	int		j;
-	t_list	*stack_a_cpy;
-	t_list	*stack_b_cpy;
+	t_stack	*stack_a_cpy;
+	t_stack	*stack_b_cpy;
 	char	*move;
 
 	j = 0;

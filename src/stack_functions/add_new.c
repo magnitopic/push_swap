@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   add_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 17:12:13 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/09 17:27:37 by alaparic         ###   ########.fr       */
+/*   Created: 2023/03/09 16:52:22 by alaparic          #+#    #+#             */
+/*   Updated: 2023/03/09 17:22:41 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-char	*pa(t_stack **stack_a, t_stack **stack_b)
+t_stack	*add_new(t_stack *stack, int value)
 {
-	t_stack	*aux;
+	t_stack	*new_node;
+	t_stack	*last_node;
+	int		i;
 
-	if (stack_size(*stack_b) == 0)
-		return ("");
-	aux = *stack_a;
-	*stack_a = *stack_b;
-	*stack_b = (*stack_b)->next;
-	(*stack_a)->next = aux;
-	return ("pa\n");
-}
-
-char	*pb(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*aux;
-
-	if (ft_lstsize(*stack_a) == 0)
-		return ("");
-	aux = *stack_b;
-	*stack_b = *stack_a;
-	*stack_a = (*stack_a)->next;
-	(*stack_b)->next = aux;
-	return ("pb\n");
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->pasos_a = 0;
+	new_node->pasos_b = 0;
+	new_node->next = NULL;
+	if (!stack)
+		return (new_node);
+	i = 0;
+	last_node = stack;
+	while (last_node->next != 0)
+		last_node = last_node->next;
+	last_node->next = new_node;
+	return (stack);
 }
