@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_new.c                                         :+:      :+:    :+:   */
+/*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 16:08:36 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/10 17:00:51 by alaparic         ###   ########.fr       */
+/*   Created: 2023/03/10 15:59:47 by alaparic          #+#    #+#             */
+/*   Updated: 2023/03/10 16:58:39 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-t_entry	*dict_new(t_stack *stack_a, t_stack *stack_b, char *moves)
+t_stack	*copy(t_stack *stack)
 {
-	t_entry	*new;
+	int		i;
+	t_stack	*new_stack;
+	int		*aux;
 
-	new = malloc(sizeof(t_entry));
-	if (!new)
+	if (!stack_size(stack))
 		return (NULL);
-	new->stack_a = stack_a;
-	new->stack_b = stack_b;
-	new->moves = moves;
-	return (new);
+	new_stack = NULL;
+	i = 0;
+	aux = malloc(sizeof(int));
+	*aux = get(stack, i++)->value;
+	new_stack = add_new(new_stack, *aux);
+	while (i < stack_size(stack))
+	{
+		aux = malloc(sizeof(int));
+		*aux = get(stack, i++)->value;
+		add_new(new_stack, *aux);
+	}
+	return (new_stack);
 }

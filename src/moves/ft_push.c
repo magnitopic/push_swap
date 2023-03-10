@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:13 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/09 17:27:37 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:14:49 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*aux;
 
-	if (ft_lstsize(*stack_a) == 0)
+	if (stack_size(*stack_a) == 0)
 		return ("");
 	aux = *stack_b;
 	*stack_b = *stack_a;

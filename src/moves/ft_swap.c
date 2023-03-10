@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:33:07 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/09 16:20:20 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:15:37 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*sa(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*aux;
 
 	(void)stack_b;
-	if (ft_lstsize(*stack_a) <= 1)
+	if (stack_size(*stack_a) <= 1)
 		return ("");
 	aux = *stack_a;
 	*stack_a = (*stack_a)->next;
@@ -31,7 +31,7 @@ char	*sb(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*aux;
 
 	(void)stack_a;
-	if (ft_lstsize(*stack_b) <= 1)
+	if (stack_size(*stack_b) <= 1)
 		return ("");
 	aux = *stack_b;
 	*stack_b = (*stack_b)->next;
