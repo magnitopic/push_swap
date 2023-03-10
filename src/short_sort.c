@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   short_sorter.c                                     :+:      :+:    :+:   */
+/*   short_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/10 17:00:25 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:05:55 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*short_sort(t_stack *stack_a, t_stack *stack_b)
 	t_entry	*dictionary;
 	int		i;
 	int		j;
-	t_stack	*stack_a_cpy;
-	t_stack	*stack_b_cpy;
 	char	*move;
 
 	j = 0;
@@ -29,35 +27,35 @@ char	*short_sort(t_stack *stack_a, t_stack *stack_b)
 		while (i < 11)
 		{
 			move = "";
-			stack_a_cpy = copy(dict_get(dictionary, j)->stack_a);  // ? replace stack_a_cpy with stack_a
-			stack_b_cpy = copy(dict_get(dictionary, j)->stack_b);
+			stack_a = copy(dict_get(dictionary, j)->stack_a);
+			stack_b = copy(dict_get(dictionary, j)->stack_b);
 			if (i == 0)
-				move = sa(&stack_a_cpy, &stack_b_cpy);
+				move = sa(&stack_a, &stack_b);
 			else if (i == 1)
-				move = sb(&stack_a_cpy, &stack_b_cpy);
+				move = sb(&stack_a, &stack_b);
 			else if (i == 2)
-				move = ss(&stack_a_cpy, &stack_b_cpy);
+				move = ss(&stack_a, &stack_b);
 			else if (i == 3)
-				move = pa(&stack_a_cpy, &stack_b_cpy);
+				move = pa(&stack_a, &stack_b);
 			else if (i == 4)
-				move = pb(&stack_a_cpy, &stack_b_cpy);
+				move = pb(&stack_a, &stack_b);
 			else if (i == 5)
-				move = ra(&stack_a_cpy, &stack_b_cpy);
+				move = ra(&stack_a, &stack_b);
 			else if (i == 6)
-				move = rb(&stack_a_cpy, &stack_b_cpy);
+				move = rb(&stack_a, &stack_b);
 			else if (i == 7)
-				move = rr(&stack_a_cpy, &stack_b_cpy);
+				move = rr(&stack_a, &stack_b);
 			else if (i == 8)
-				move = rra(&stack_a_cpy, &stack_b_cpy);
+				move = rra(&stack_a, &stack_b);
 			else if (i == 9)
-				move = rrb(&stack_a_cpy, &stack_b_cpy);
+				move = rrb(&stack_a, &stack_b);
 			else if (i == 10)
-				move = rrr(&stack_a_cpy, &stack_b_cpy);
+				move = rrr(&stack_a, &stack_b);
 			if (ft_strlen(move)
-				&& !ft_is_in_list(dictionary, stack_a_cpy, stack_b_cpy))
-				dict_add_back(&dictionary, dict_new(stack_a_cpy, stack_b_cpy, \
+				&& !ft_is_in_list(dictionary, stack_a, stack_b))
+				dict_add_back(&dictionary, dict_new(stack_a, stack_b, \
 				ft_strjoin(dict_get(dictionary, j)->moves, move)));
-			if (ft_issorted(stack_a_cpy, stack_b_cpy))
+			if (ft_issorted(stack_a, stack_b))
 				return (dict_get(dictionary, dict_size(dictionary) - 1)->moves);
 			i++;
 		}

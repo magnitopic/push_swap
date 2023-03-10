@@ -1,0 +1,108 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
+/*   Updated: 2023/03/10 17:21:26 by alaparic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/push_swap.h"
+
+// TODO - also copy the other struct values for 'copy' function
+t_stack	*copy(t_stack *stack)
+{
+	int		i;
+	t_stack	*new_stack;
+	int		*aux;
+
+	if (!stack_size(stack))
+		return (NULL);
+	new_stack = NULL;
+	i = 0;
+	aux = malloc(sizeof(int));
+	*aux = get(stack, i++)->value;
+	new_stack = add_new(new_stack, *aux);
+	while (i < stack_size(stack))
+	{
+		aux = malloc(sizeof(int));
+		*aux = get(stack, i++)->value;
+		add_new(new_stack, *aux);
+	}
+	return (new_stack);
+}
+
+t_stack	*add_new(t_stack *stack, int value)
+{
+	t_stack	*new_node;
+	t_stack	*last_node;
+	int		i;
+
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->pasos_a = 0;
+	new_node->pasos_b = 0;
+	new_node->next = NULL;
+	if (!stack)
+		return (new_node);
+	i = 0;
+	last_node = stack;
+	while (last_node->next != 0)
+		last_node = last_node->next;
+	last_node->next = new_node;
+	return (stack);
+}
+
+int	compare(t_stack *lst1, t_stack *lst2)
+{
+	int	i;
+
+	if (stack_size(lst1) != stack_size(lst2))
+		return (0);
+	i = 0;
+	while (i < stack_size(lst1))
+	{
+		if (get(lst1, i)->value
+			!= get(lst2, i)->value)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+t_stack	*get(t_stack *stack, int pos)
+{
+	int		i;
+	t_stack	*node;
+
+	node = stack;
+	i = 0;
+	while (i < pos)
+	{
+		i++;
+		node = node->next;
+	}
+	return (node);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	len;
+
+	len = 1;
+	if (stack)
+	{
+		while (stack->next != 0)
+		{
+			stack = stack->next;
+			len++;
+		}
+		return (len);
+	}
+	return (0);
+}
