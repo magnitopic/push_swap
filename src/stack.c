@@ -6,11 +6,20 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/10 17:21:26 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:45:28 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
+
+/**
+ * Functions for t_stack struct.
+ * -	Copy values from a node to a new one
+ * -	Create a new node
+ * -	Return 1 or 0 if the stacks are the same
+ * -	Get one node form the stack
+ * -	Get the stack size
+ */
 
 // TODO - also copy the other struct values for 'copy' function
 t_stack	*copy(t_stack *stack)

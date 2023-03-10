@@ -6,11 +6,19 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:09:41 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/10 17:10:46 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:45:05 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+/**
+ * Functions for t_entry struct.
+ * -	Get size by counting elements
+ * -	Get one entry form the list
+ * -	Add element to the back of the dictionary
+ * -	Create the dictionary size
+ */
 
 int	dict_size(t_entry *dictionary)
 {

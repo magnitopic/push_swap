@@ -1,14 +1,16 @@
 # push_swap
 NAME				=	push_swap
-PUSHSWAP_SRC		=	src/push_swap.c \
-						src/stack.c \
+						
+PUSHSWAP_SRC		=	src/stack.c \
+						src/helpers.c \
+						src/push_swap.c \
+						src/validator.c \
+						src/dictionary.c \
+						src/short_sort.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
-						src/moves/ft_reverse_rotate.c \
-						src/helpers.c \
-						src/short_sort.c \
-						src/dictionary.c 
+						src/moves/ft_reverse_rotate.c
 #src/modern_times.c \
 
 OBJS			= $(PUSHSWAP_SRC:.c=.o)
