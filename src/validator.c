@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/11 18:53:10 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/11 19:17:28 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*parser(int argc, char **argv)
 		if (!ft_isdigit(lst[i])
 			&& !((lst[i] == 43 || lst[i] == 45) && ft_isdigit(lst[i + 1]) \
 			&& lst[i - 1] == 32)
-			&& lst[i++] != 32)
+			&& lst[i] != 32)
 			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
 		i++;
 	}
