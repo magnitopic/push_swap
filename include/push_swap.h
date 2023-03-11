@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/11 14:19:11 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/11 16:13:48 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*short_sort(t_stack *stack_a, t_stack *stack_b);
 int		ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b);
 int		ft_issorted(t_stack *stack_a, t_stack *stack_b);
 t_stack	*validator(int argc, char **argv);
+void	stack_print(t_stack *lst);
 
 /* char	*new_values(t_entry *dictionary, int j);
 char	*modern_times(t_stack *stack_a, t_stack *stack_b);
