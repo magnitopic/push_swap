@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/12 17:54:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:22:19 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	no_repeating_values(t_stack *stack_a, int len)
 	}
 }
 
-static t_stack	*create_stack(char **numbers, int len)
+static t_stack	*create_stack(char **numbers)
 {
 	t_stack	*stack_a;
 	int		i;
@@ -42,7 +42,7 @@ static t_stack	*create_stack(char **numbers, int len)
 	aux = malloc(sizeof(int));
 	*aux = ft_atoi(numbers[i++]);
 	stack_a = add_new(stack_a, *aux);
-	while (i < len)
+	while (numbers[i] != NULL)
 	{
 		aux = malloc(sizeof(int));
 		*aux = ft_atoi(numbers[i++]);
@@ -59,7 +59,7 @@ static char	*parser(char **value)
 
 	i = 0;
 	lst = "";
-	while (value[i] != '\0')
+	while (value[i] != NULL)
 	{
 		j = 0;
 		if ((value[i][0] == '-' || value[i][0] == '+')
@@ -93,7 +93,7 @@ t_stack	*validator(int argc, char **argv)
 			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
 		lst = ft_strjoin(lst, parser(ft_split(argv[i++], ' ')));
 	}
-	stack_a = create_stack(ft_split(lst, ' '), argc);
-	no_repeating_values(stack_a, argc - 1);
+	stack_a = create_stack(ft_split(lst, ' '));
+	no_repeating_values(stack_a, stack_size(stack_a));
 	return (stack_a);
 }
