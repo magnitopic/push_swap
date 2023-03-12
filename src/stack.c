@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/11 16:14:44 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/12 11:55:34 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_stack	*add_new(t_stack *stack, int value)
 {
 	t_stack	*new_node;
 	t_stack	*last_node;
-	int		i;
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
@@ -59,7 +58,6 @@ t_stack	*add_new(t_stack *stack, int value)
 	new_node->next = NULL;
 	if (!stack)
 		return (new_node);
-	i = 0;
 	last_node = stack;
 	while (last_node->next != 0)
 		last_node = last_node->next;

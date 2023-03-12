@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/11 19:17:28 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:54:48 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	no_repeating_values(t_stack *stack_a, int len)
 	while (i < len)
 	{
 		j = i + 1;
-		while (j < len - 1)
+		while (j < len)
 		{
 			if (get(stack_a, i)->value == get(stack_a, j)->value)
 				(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
@@ -51,29 +51,27 @@ static t_stack	*create_stack(char **numbers, int len)
 	return (stack_a);
 }
 
-static char	*parser(int argc, char **argv)
+static char	*parser(char **value)
 {
-	char	*value;
-	char	*lst;
 	int		i;
+	int		j;
+	char	*lst;
 
-	i = 1;
-	lst = "";
-	while (i < argc)
-	{
-		value = ft_strtrim(argv[i++], " ");
-		if (!ft_strlen(value))
-			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
-		lst = ft_strjoin(ft_strjoin(lst, value), " ");
-	}
 	i = 0;
-	while ((size_t)i < ft_strlen(lst))
+	lst = "";
+	while (value[i] != '\0')
 	{
-		if (!ft_isdigit(lst[i])
-			&& !((lst[i] == 43 || lst[i] == 45) && ft_isdigit(lst[i + 1]) \
-			&& lst[i - 1] == 32)
-			&& lst[i] != 32)
-			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+		j = 0;
+		if ((value[i][0] == '-' || value[i][0] == '+')
+			&& ft_strlen(value[i]) > 1)
+			j++;
+		while (value[i][j] != '\0')
+		{
+			if (!ft_isdigit(value[i][j]))
+				(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+			j++;
+		}
+		lst = ft_strjoin(ft_strjoin(lst, value[i]), " ");
 		i++;
 	}
 	return (lst);
@@ -83,11 +81,19 @@ t_stack	*validator(int argc, char **argv)
 {
 	char	*lst;
 	t_stack	*stack_a;
+	int		i;
 
 	if (argc <= 1)
 		return (NULL);
-	lst = parser(argc, argv);
-	stack_a = create_stack(ft_split(lst, ' '), argc - 1);
+	lst = "";
+	i = 1;
+	while (i < argc)
+	{
+		if (!ft_strlen(argv[i]))
+			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+		lst = ft_strjoin(lst, parser(ft_split(argv[i++], ' ')));
+	}
+	stack_a = create_stack(ft_split(lst, ' '), argc);
 	no_repeating_values(stack_a, argc - 1);
 	return (stack_a);
 }
