@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/13 14:59:06 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:06:59 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_stack	*create_stack(char **numbers)
 		aux = ft_atoi(numbers[i++]);
 		if (aux > 214748367 || aux < -214748368)
 			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
-		add_new(stack_a, aux);
+		stack_a = add_new(stack_a, aux);
 	}
 	return (stack_a);
 }
