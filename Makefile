@@ -7,11 +7,11 @@ PUSHSWAP_SRC		=	src/stack.c \
 						src/validator.c \
 						src/dictionary.c \
 						src/short_sort.c \
+						src/modern_times.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
 						src/moves/ft_reverse_rotate.c
-#src/modern_times.c \
 
 OBJS			= $(PUSHSWAP_SRC:.c=.o)
 
