@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/12 18:22:19 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:59:06 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,18 @@ static void	no_repeating_values(t_stack *stack_a, int len)
 
 static t_stack	*create_stack(char **numbers)
 {
-	t_stack	*stack_a;
-	int		i;
-	int		*aux;
+	t_stack		*stack_a;
+	int			i;
+	long int	aux;
 
 	stack_a = NULL;
 	i = 0;
-	aux = malloc(sizeof(int));
-	*aux = ft_atoi(numbers[i++]);
-	stack_a = add_new(stack_a, *aux);
 	while (numbers[i] != NULL)
 	{
-		aux = malloc(sizeof(int));
-		*aux = ft_atoi(numbers[i++]);
-		add_new(stack_a, *aux);
+		aux = ft_atoi(numbers[i++]);
+		if (aux > 214748367 || aux < -214748368)
+			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+		add_new(stack_a, aux);
 	}
 	return (stack_a);
 }
