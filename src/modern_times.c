@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/13 17:12:53 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:03:17 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	count_steps_a(t_stack *stack_a)
 			stack_a->pasos_a = len;
 		else
 			stack_a->pasos_a = len - str_len;
-		//ft_printf("Value: %d pasos_a: %d\n", stack_a->value ,stack_a->pasos_a);
+		//ft_printf("Value: %d pasos_a: %d\n", stack_a->value, stack_a->pasos_a);
 		stack_a = stack_a->next;
 		len++;
 	}
@@ -36,40 +36,48 @@ static void	count_steps_a(t_stack *stack_a)
 		stack_a = stack_a->next;
 		len++; */
 
-/* static int	count_steps_b(t_stack *stack_a, t_stack *stack_b)
+static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
-	int	j;
-	int	*n_steps;
-	int	maxinf;
+	int	str_len;
 
-	n_steps = ft_calloc(ft_lstsize(stack_a), sizeof(int));
-	while (i < ft_lstsize(stack_a))
+	str_len = stack_size(stack_b);
+	while (stack_a != NULL)
 	{
-		maxinf = ft_lstmin(stack_b);
-		while (j < ft_lstsize(stack_b))
+		if (stack_a->value < get(stack_b, 1)->value
+			&& stack_a->value > get(stack_b, str_len - 1)->value)
 		{
-			if ((int *)ft_get(stack_a, i)->content
-				< (int *)ft_get(stack_b, j)->content)
-			{
-				if ((int *)ft_get(stack_b, j)->content
-					< (int *)ft_get(stack_a, i)->content
-					&& (int *)ft_get(stack_b, j)->content > maxinf)
-					maxinf = (int *)ft_get(stack_b, j)->content;
-			}
+			if (i < (str_len / 2))
+				stack_a->pasos_b = 0;
+			else
+				stack_a->pasos_b = 0;
 		}
-		if (i < (lst_len / 2))
-			n_steps[i] = i;
-		else
-			n_steps[i] = -(lst_len - i);
+		i = 1;
+		while (get(stack_b, i) != NULL)
+		{
+			ft_printf("stack_a: %d stack_b: %d stack_b-1: %d \n", stack_a->value, get(stack_b, i)->value, get(stack_b, i - 1)->value);
+			if (stack_a->value < get(stack_b, i)->value
+				&& stack_a->value > get(stack_b, i -1)->value)
+			{
+				if (i < (str_len / 2))
+					stack_a->pasos_b = i;
+				else
+					stack_a->pasos_b = i - str_len;
+			}
+			i++;
+		}
+		ft_printf("Value: %d pasos_b: %d\n", stack_a->value, stack_a->pasos_b);
+		stack_print(stack_a);
+		stack_print(stack_b);
+		stack_a = stack_a->next;
 	}
-} */
+}
 
 static void	count_min_steps(t_stack *stack_a, t_stack *stack_b)
 {
 	(void)stack_b;
 	count_steps_a(stack_a);
-	/* count_steps_b(stack_a, stack_b); */
+	count_steps_b(stack_a, stack_b);
 }
 
 char	*modern_times(t_stack *stack_a, t_stack *stack_b)
