@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/20 16:20:57 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:18:21 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,20 @@
 
 static char	*new_move(t_stack **stack_a, t_stack **stack_b, int i)
 {
-	char	*move;
+	char	*(*moves[11])(t_stack **stack_a, t_stack **stack_b);
 
-	if (i == 0)
-		move = sa(stack_a, stack_b);
-	else if (i == 1)
-		move = sb(stack_a, stack_b);
-	else if (i == 2)
-		move = ss(stack_a, stack_b);
-	else if (i == 3)
-		move = pa(stack_a, stack_b);
-	else if (i == 4)
-		move = pb(stack_a, stack_b);
-	else if (i == 5)
-		move = ra(stack_a, stack_b);
-	else if (i == 6)
-		move = rb(stack_a, stack_b);
-	else if (i == 7)
-		move = rr(stack_a, stack_b);
-	else if (i == 8)
-		move = rra(stack_a, stack_b);
-	else if (i == 9)
-		move = rrb(stack_a, stack_b);
-	else
-		move = rrr(stack_a, stack_b);
-	return (move);
+	moves[0] = &sa;
+	moves[1] = &sb;
+	moves[2] = &ss;
+	moves[3] = &pa;
+	moves[4] = &pb;
+	moves[5] = &ra;
+	moves[6] = &rb;
+	moves[7] = &rr;
+	moves[8] = &rra;
+	moves[9] = &rrb;
+	moves[10] = &rrr;
+	return (moves[i](stack_a, stack_b));
 }
 
 char	*short_sort(t_stack *stack_a, t_stack *stack_b)
