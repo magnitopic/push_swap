@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/13 16:52:20 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:32:12 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (ft_issorted(stack_a, stack_b))
 		return (0);
-	if (argc < 6)
+	if (argc <= 6)
 		ft_printf("%s", short_sort(stack_a, stack_b));
 	else
 		ft_printf("%s", modern_times(stack_a, stack_b));
