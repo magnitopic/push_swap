@@ -2,7 +2,6 @@
 NAME				=	push_swap
 						
 PUSHSWAP_SRC		=	src/stack.c \
-						src/helpers.c \
 						src/push_swap.c \
 						src/validator.c \
 						src/dictionary.c \
