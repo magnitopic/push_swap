@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/20 13:42:47 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:39:19 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,46 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+static char	*move_number(t_stack *stack_a, t_stack *stack_b)
+{
+	char	*moves;
+	int		position;
+	int		min_steps;
+	int		abs_value;
+	int		i;
+
+	(void)stack_b;
+	moves = "";
+	min_steps = 214748367;
+	i = 0;
+	while (i < stack_size(stack_a))
+	{
+		abs_value = ft_abs(get(stack_a, i)->pasos_a) \
+		+ ft_abs(get(stack_a, i)->pasos_b);
+		if (abs_value < min_steps)
+		{
+			min_steps = abs_value;
+			position = i;
+		}
+		i++;
+	}
+	return (moves);
+}
+
 char	*modern_times(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*moves;
-	/* int		lst_len;
+	int		lst_len;
 
-	lst_len = stack_size(stack_a); */
+	lst_len = stack_size(stack_a);
 	moves = pb(&stack_a, &stack_b);
 	moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
-	moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
-	count_steps_a(stack_a);
-	count_steps_b(stack_a, stack_b);
-	/* while (lst_len > 0)							// TODO: improve with a better condition
+	while (ft_issorted(stack_a, NULL))
 	{
-
-		moves = ft_strjoin(moves, move_number(stack_a, stack_b, min_steps));
+		count_steps_a(stack_a);
+		count_steps_b(stack_a, stack_b);
+		moves = ft_strjoin(moves, move_number(stack_a, stack_b));
 		moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
-	} */
+	}
 	return (moves);
 }
