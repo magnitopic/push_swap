@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/20 17:39:19 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:20:17 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static char	*move_number(t_stack *stack_a, t_stack *stack_b)
+static char	*move_number(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*moves;
 	int		position;
@@ -67,19 +67,36 @@ static char	*move_number(t_stack *stack_a, t_stack *stack_b)
 	int		abs_value;
 	int		i;
 
-	(void)stack_b;
 	moves = "";
 	min_steps = 214748367;
 	i = 0;
-	while (i < stack_size(stack_a))
+	while (i < stack_size(*stack_a))
 	{
-		abs_value = ft_abs(get(stack_a, i)->pasos_a) \
-		+ ft_abs(get(stack_a, i)->pasos_b);
+		abs_value = ft_abs(get(*stack_a, i)->pasos_a) \
+		+ ft_abs(get(*stack_a, i)->pasos_b);
 		if (abs_value < min_steps)
 		{
 			min_steps = abs_value;
 			position = i;
 		}
+		i++;
+	}
+	i = 0;
+	while (i < ft_abs(get(*stack_a, position)->pasos_a))
+	{
+		if (get(*stack_a, position)->pasos_a > 0)
+			moves = ft_strjoin(moves, ra(stack_a, stack_b));
+		else if (get(*stack_a, position)->pasos_a < 0)
+			moves = ft_strjoin(moves, rra(stack_a, stack_b));
+		i++;
+	}
+	i = 0;
+	while (i < ft_abs(get(*stack_a, position)->pasos_b))
+	{
+		if (get(*stack_a, position)->pasos_b > 0)
+			moves = ft_strjoin(moves, rb(stack_a, stack_b));
+		else if (get(*stack_a, position)->pasos_b < 0)
+			moves = ft_strjoin(moves, rrb(stack_a, stack_b));
 		i++;
 	}
 	return (moves);
@@ -93,12 +110,22 @@ char	*modern_times(t_stack *stack_a, t_stack *stack_b)
 	lst_len = stack_size(stack_a);
 	moves = pb(&stack_a, &stack_b);
 	moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
-	while (ft_issorted(stack_a, NULL))
+	while (stack_size(stack_a) > 0)
 	{
 		count_steps_a(stack_a);
 		count_steps_b(stack_a, stack_b);
-		moves = ft_strjoin(moves, move_number(stack_a, stack_b));
+		/* imprimir pasos stack_a */
+		stack_print(stack_a);
+		stack_print(stack_b);
+		for (int i = 0; i < stack_size(stack_a); i++)
+		{
+			ft_printf("%d-> %d  %d\n",get(stack_a, i)->value, get(stack_a, i)->pasos_a, get(stack_a, i)->pasos_b);
+		}
+		moves = ft_strjoin(moves, move_number(&stack_a, &stack_b));
 		moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
+		stack_print(stack_a);
+		stack_print(stack_b);
+		ft_printf("========\n");
 	}
 	return (moves);
 }
