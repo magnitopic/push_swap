@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/12 11:55:34 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:25:24 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
  * -	Get the stack size
  */
 
-// TODO - also copy the other struct values for 'copy' function
 t_stack	*copy(t_stack *stack)
 {
 	int		i;

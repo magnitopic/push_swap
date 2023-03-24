@@ -2,6 +2,7 @@
 NAME				=	push_swap
 						
 PUSHSWAP_SRC		=	src/stack.c \
+						src/helpers.c \
 						src/push_swap.c \
 						src/validator.c \
 						src/dictionary.c \
@@ -11,8 +12,21 @@ PUSHSWAP_SRC		=	src/stack.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
 						src/moves/ft_reverse_rotate.c
-
 OBJS			= $(PUSHSWAP_SRC:.c=.o)
+
+# bonus
+NAME_BONUS			=	checker
+BONUS_SRC			=	src/stack.c \
+						src/checker.c \
+						src/helpers.c \
+						src/validator.c \
+						src/dictionary.c \
+						src/modern_times.c \
+						src/moves/ft_push.c \
+						src/moves/ft_swap.c \
+						src/moves/ft_rotate.c \
+						src/moves/ft_reverse_rotate.c
+OBJSBNS			= $(BONUS_SRC:.c=.o)
 
 # Libft
 LIBFT				=	libft.a
@@ -24,7 +38,6 @@ RM					=	rm -f
 CFLAGS				=	-Wall -Werror -Wextra
 
 # Colours
-BLACK				=	\033[0;30m
 RED					=	\033[0;31m
 GREEN				=	\033[0;32m
 YELLOW				=	\033[0;33m
@@ -41,11 +54,15 @@ all:		$(LIBFT) $(NAME)
 $(LIBFT):
 			@make -C libft bonus
 
-$(NAME):			$(OBJS)
-					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
+$(NAME):	$(OBJS)
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
+
+bonus:		$(OBJSBNS) $(LIBFT)
+			@$(CC) $(CFLAGS) $(OBJSBNS) $(LIBFT_SRC)$(LIBFT) -o $(NAME_BONUS)
+			@printf "$(BLUE)==> $(CYAN)Push_swap bonus compiled ✅✨\n\n$(RESET)"
 
 clean:
-			@$(RM) $(NAME) $(OBJS)
+			@$(RM) $(NAME) $(OBJS) $(OBJSBNS) $(NAME_BONUS)
 			@printf "\n$(BLUE)==> $(RED)Removed Push_swap 🗑️\n$(RESET)"
 
 fclean:		clean
@@ -54,4 +71,4 @@ fclean:		clean
 re:			fclean all
 			@printf "$(BLUE)==> $(CYAN)Push_swap recompiled 🔄\n$(RESET)"
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean bonus re
