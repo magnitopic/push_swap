@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/25 16:41:14 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/25 17:37:44 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	count_steps_a(t_stack *stack_a)
 		if (len <= (str_len / 2))
 			stack_a->pasos_a = len;
 		else
-			stack_a->pasos_a = len - str_len;
+			stack_a->pasos_a = -(len - str_len);
 		stack_a = stack_a->next;
 		len++;
 	}
@@ -51,7 +51,7 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 				if (len <= (stack_size(stack_b) / 2))
 					stack_a->pasos_b = len;
 				else
-					stack_a->pasos_b = stack_size(stack_b) - len;
+					stack_a->pasos_b = -(len - stack_size(stack_b));
 			}
 			stack_b_cpy = stack_b_cpy->next;
 			len++;
