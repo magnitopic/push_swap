@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/24 16:25:24 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/26 14:10:30 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,22 +111,4 @@ int	stack_size(t_stack *stack)
 		return (len);
 	}
 	return (0);
-}
-
-void	stack_print(t_stack *lst)
-{
-	t_stack	*node;
-
-	if (lst == NULL)
-	{
-		ft_printf("NULL\n");
-		return ;
-	}
-	node = lst;
-	while (node != NULL)
-	{
-		ft_printf("%i ", (node->value));
-		node = node->next;
-	}
-	ft_printf("\n");
 }

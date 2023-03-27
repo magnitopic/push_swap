@@ -6,7 +6,11 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/25 17:37:44 by alaparic         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/27 12:01:07 by alaparic         ###   ########.fr       */
+>>>>>>> tmp
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +47,17 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 		while (stack_b_cpy->next != NULL)
 		{
 			if ((stack_a->value > stack_b_cpy->value \
-				&& stack_a->value < get(stack_b, len)->value)
-				|| (stack_a->value < stack_b_cpy->value \
-				&& stack_a->value < get(stack_b, len)->value
-				&& stack_b_cpy->value < get(stack_b, len)->value))
+				&& stack_a->value < get(stack_b, len)->value))
 			{
 				if (len <= (stack_size(stack_b) / 2))
 					stack_a->pasos_b = len;
 				else
 					stack_a->pasos_b = -(len - stack_size(stack_b));
 			}
+			if (stack_a->value > max(stack_b) && stack_a->value < min(stack_b))
+				{
+					stack_a->pasos_b = get_pos(stack_b, max(stack_b))->value;
+				}
 			stack_b_cpy = stack_b_cpy->next;
 			len++;
 		}
