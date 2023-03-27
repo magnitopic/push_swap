@@ -2,6 +2,7 @@
 NAME				=	push_swap
 						
 PUSHSWAP_SRC		=	src/stack.c \
+						src/stack2.c \
 						src/helpers.c \
 						src/push_swap.c \
 						src/validator.c \
@@ -17,11 +18,12 @@ OBJS			= $(PUSHSWAP_SRC:.c=.o)
 # bonus
 NAME_BONUS			=	checker
 BONUS_SRC			=	src/stack.c \
-						src/checker_bonus.c \
+						src/stack2.c \
 						src/helpers.c \
 						src/validator.c \
 						src/dictionary.c \
 						src/modern_times.c \
+						src/checker_bonus.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
