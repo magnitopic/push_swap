@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 14:10:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/27 11:59:10 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:22:11 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,15 @@ int	min(t_stack *stack)
 	return (min);
 }
 
-t_stack	*get_pos(t_stack *stack, int value)
+int	get_pos(t_stack *stack, int value)
 {
+	int	pos;
+
+	pos = 0;
 	while (stack->value != value)
+	{
 		stack = stack->next;
-	return (stack);
+		pos++;
+	}
+	return (pos);
 }

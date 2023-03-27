@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/27 12:06:35 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:56:40 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,29 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 		stack_b_cpy = stack_b;
 		len = 1;
 		stack_a->pasos_b = 0;
+		if (stack_a->value > max(stack_b) || stack_a->value < min(stack_b))
+		{
+			if (get_pos(stack_b, max(stack_b)) <= (stack_size(stack_b) / 2))
+				stack_a->pasos_b = get_pos(stack_b, max(stack_b));
+			else
+				stack_a->pasos_b = -(get_pos(stack_b, max(stack_b)) \
+				- stack_size(stack_b));
+		}
 		while (stack_b_cpy->next != NULL)
 		{
-			if ((stack_a->value > stack_b_cpy->value \
-				&& stack_a->value < get(stack_b, len)->value))
-			{
+			ft_printf("%d < %d && %d > %d\n%d\n", stack_a->value, stack_b_cpy->value, stack_a->value, stack_b_cpy->next->value, len);
+			if (stack_a->value < stack_b_cpy->value
+				&& stack_a->value > stack_b_cpy->next->value)
+			
 				if (len <= (stack_size(stack_b) / 2))
 					stack_a->pasos_b = len;
 				else
 					stack_a->pasos_b = -(len - stack_size(stack_b));
 			}
-			if (stack_a->value > max(stack_b) && stack_a->value < min(stack_b))
-				{
-					stack_a->pasos_b = get_pos(stack_b, max(stack_b))->value;
-				}
 			stack_b_cpy = stack_b_cpy->next;
 			len++;
 		}
+		ft_printf("------------\n");
 		stack_a = stack_a->next;
 	}
 }
@@ -95,14 +101,11 @@ static char	*move_number(t_stack **stack_a, t_stack **stack_b)
 	i = 0;
 	while (i < ft_abs(get(*stack_a, position)->pasos_b))
 	{
-		ft_printf("value:%d -> %d\n", get(*stack_a, position)->value, ft_abs(get(*stack_a, position)->pasos_b));
 		if (get(*stack_a, position)->pasos_b < 0)
 			moves = ft_strjoin(moves, rb(stack_a, stack_b));
 		else
 			moves = ft_strjoin(moves, rrb(stack_a, stack_b));
 		i++;
-		stack_print(*stack_a);
-		stack_print(*stack_b);
 	}
 	return (moves);
 }
@@ -122,11 +125,17 @@ char	*modern_times(t_stack *stack_a, t_stack *stack_b)
 		{
 			ft_printf("%d-> %d  %d\n", get(stack_a, i)->value, get(stack_a, i)->pasos_a, get(stack_a, i)->pasos_b);
 		}
+		ft_printf("***********\n");
+		stack_print(stack_a);
+		stack_print(stack_b);
+		ft_printf("***********\n");
 		moves = ft_strjoin(moves, move_number(&stack_a, &stack_b));
 		moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
 		stack_print(stack_a);
 		stack_print(stack_b);
 		ft_printf("========\n");
 	}
+	stack_print(stack_a);
+	stack_print(stack_b);
 	return (moves);
 }
