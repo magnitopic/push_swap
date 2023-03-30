@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/13 15:06:59 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:01:03 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	no_repeating_values(t_stack *stack_a, int len)
 		while (j < len)
 		{
 			if (get(stack_a, i)->value == get(stack_a, j)->value)
-				(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+				(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 			j++;
 		}
 		i++;
@@ -43,7 +43,7 @@ static t_stack	*create_stack(char **numbers)
 	{
 		aux = ft_atoi(numbers[i++]);
 		if (aux > 214748367 || aux < -214748368)
-			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 		stack_a = add_new(stack_a, aux);
 	}
 	return (stack_a);
@@ -66,7 +66,7 @@ static char	*parser(char **value)
 		while (value[i][j] != '\0')
 		{
 			if (!ft_isdigit(value[i][j]))
-				(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+				(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 			j++;
 		}
 		lst = ft_strjoin(ft_strjoin(lst, value[i]), " ");
@@ -88,7 +88,7 @@ t_stack	*validator(int argc, char **argv)
 	while (i < argc)
 	{
 		if (!ft_strlen(argv[i]))
-			(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
+			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 		lst = ft_strjoin(lst, parser(ft_split(argv[i++], ' ')));
 	}
 	stack_a = create_stack(ft_split(lst, ' '));
