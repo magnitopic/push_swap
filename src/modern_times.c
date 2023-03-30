@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/30 17:46:10 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:38:15 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 
 /**
  * We need to position the numbers in both our stacks so that the only thing
- * left is * moving values from `stack_b` to `stack_a`.
+ * left is moving values from `stack_b` to `stack_a`.
  * We first position the biggest value in `stack_b` at the front of the list.
  * And we call the `sort_three` function, from the helpers file, to sort the
  * three numbers we left in `stack_a`.
@@ -87,24 +87,30 @@ static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
 	return (moves);
 }
 
-char	*modern_times(t_stack *stack_a, t_stack *stack_b)
+/* static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
+{
+	t_stack	first;
+	
+	return (moves);
+} */
+
+char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*moves;
 	int		pos;
 
-	moves = pb(&stack_a, &stack_b);
-	moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
-	while (stack_size(stack_a) > 3)
+	moves = pb(stack_a, stack_b);
+	moves = ft_strjoin(moves, pb(stack_a, stack_b));
+	while (stack_size(*stack_a) > 3)
 	{
-		count_steps_a(stack_a);
-		count_steps_b(stack_a, stack_b);
-		totaliza(stack_a);
-		pos = min_steps(&stack_a);
-		moves = synergy(&stack_a, &stack_b, pos, moves);
-		moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
+		count_steps_a(*stack_a);
+		count_steps_b(*stack_a, *stack_b);
+		totaliza(*stack_a);
+		pos = min_steps(stack_a);
+		moves = synergy(stack_a, stack_b, pos, moves);
+		moves = ft_strjoin(moves, pb(stack_a, stack_b));
 	}
-	moves = order_stacks(&stack_a, &stack_b, moves);
-	stack_print(stack_a);
-	stack_print(stack_b);
+	moves = order_stacks(stack_a, stack_b, moves);
+	//moves = zipper(&stack_a, &stack_a, moves);
 	return (moves);
 }

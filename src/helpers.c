@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/30 17:46:26 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/30 18:12:16 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-static char	*sort_three(t_stack **a, t_stack **b, char *moves)
+char	*sort_three(t_stack **a, t_stack **b, char *moves)
 {
 	if ((*a)->value < (*a)->next->value
 		&& (*a)->next->value > (*a)->next->next->value
