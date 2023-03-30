@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/29 12:59:25 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:49:24 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	count_steps_a(t_stack *stack_a)
 static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*stack_b_cpy;
-	int	target;
+	int		target;
 
 	while (stack_a != NULL)
 	{
@@ -46,9 +46,10 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 			{
 				if (stack_a->value < stack_b_cpy->value
 					&& stack_a->value > stack_b_cpy->next->value)
-					target = stack_b_cpy->next->value; 
-				else if (stack_a->value < get(stack_b, stack_size(stack_b) - 1)->value
-						&& stack_a->value > stack_b->value)
+					target = stack_b_cpy->next->value;
+				else if (stack_a->value
+					< get(stack_b, stack_size(stack_b) - 1)->value
+					&& stack_a->value > stack_b->value)
 					target = stack_b->value;
 				stack_b_cpy = stack_b_cpy->next;
 			}
@@ -56,11 +57,11 @@ static void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 		if (get_pos(stack_b, target) <= stack_size(stack_b) / 2)
 			stack_a->pasos_b = get_pos(stack_b, target);
 		else
-			stack_a->pasos_b = -(stack_size(stack_b) - get_pos(stack_b, target));
+			stack_a->pasos_b = -(stack_size(stack_b) \
+			- get_pos(stack_b, target));
 		ft_printf("%d, ", target);
 		stack_a = stack_a->next;
 	}
-	ft_printf("\n");
 }
 
 static void	totaliza(t_stack *stack_a)
@@ -82,7 +83,7 @@ static void	totaliza(t_stack *stack_a)
 
 static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int position)
 {
-	int	i;
+	int		i;
 	char	*moves;
 
 	i = 0;
@@ -136,7 +137,7 @@ static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int position)
 
 static int	min_steps(t_stack **stack_a)
 {
-	int		position;
+	int		pos;
 	int		min_steps;
 	int		abs_value;
 	int		i;
@@ -149,31 +150,30 @@ static int	min_steps(t_stack **stack_a)
 		if (abs_value < min_steps)
 		{
 			min_steps = abs_value;
-			position = i;
+			pos = i;
 		}
 		i++;
 	}
-	return (position);
+	return (pos);
 }
 
 char	*modern_times(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*moves;
+	int		steps_min;
 
 	moves = pb(&stack_a, &stack_b);
 	moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
 	while (stack_size(stack_a) >= 3)
 	{
-		ft_printf("***********\n");
+		ft_printf("\n***********\n");
 		stack_print(stack_a);
 		stack_print(stack_b);
 		count_steps_a(stack_a);
 		count_steps_b(stack_a, stack_b);
 		totaliza(stack_a);
-		int steps_min = min_steps(&stack_a);
+		steps_min = min_steps(&stack_a);
 		moves = ft_strjoin(moves, move_stacks(&stack_a, &stack_b, steps_min));
-		
-		
 		moves = ft_strjoin(moves, pb(&stack_a, &stack_b));
 	}
 	return (moves);
