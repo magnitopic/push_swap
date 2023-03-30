@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/27 11:55:27 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:29:57 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ t_entry	*dict_new(t_stack *stack_a, t_stack *stack_b, char *moves);
 char	*short_sort(t_stack *stack_a, t_stack *stack_b);
 char	*modern_times(t_stack *stack_a, t_stack *stack_b);
 int		ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b);
+void	count_steps_a(t_stack *stack_a);
+void	count_steps_b(t_stack *stack_a, t_stack *stack_b);
+void	totaliza(t_stack *stack_a);
+int		min_steps(t_stack **stack_a);
 
 #endif

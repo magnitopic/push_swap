@@ -10,6 +10,7 @@ PUSHSWAP_SRC		=	src/stack.c \
 						src/short_sort.c \
 						src/modern_times.c \
 						src/moves/ft_push.c \
+						src/modern_times2.c \
 						src/moves/ft_swap.c \
 						src/moves/ft_rotate.c \
 						src/moves/ft_reverse_rotate.c

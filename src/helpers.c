@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/24 16:24:49 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:46:26 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
  * For that to be true stack_b must be empty and
  * stack_a must have all values from smallest to largest
  */
-
 int	ft_issorted(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
@@ -43,7 +42,6 @@ int	ft_issorted(t_stack *stack_a, t_stack *stack_b)
  * them to stack_a and stack_b.
  * If the stack values are already in the dictionary 1 is returned, otherwise 0.
  */
-
 int	ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
@@ -57,4 +55,33 @@ int	ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	return (0);
+}
+
+static char	*sort_three(t_stack **a, t_stack **b, char *moves)
+{
+	if ((*a)->value < (*a)->next->value
+		&& (*a)->next->value > (*a)->next->next->value
+		&& (*a)->value < (*a)->next->next->value)
+		moves = ft_strjoin(ft_strjoin(ft_strjoin(moves, \
+		ra(a, b)), sa(a, b)), rra(a, b));
+	else if ((*a)->value > (*a)->next->value
+		&& (*a)->next->value < (*a)->next->next->value
+		&& (*a)->value < (*a)->next->next->value)
+		moves = ft_strjoin(moves, sa(a, b));
+	else if ((*a)->value < (*a)->next->value
+		&& (*a)->next->value > (*a)->next->next->value
+		&& (*a)->value > (*a)->next->next->value)
+		moves = ft_strjoin(moves, rra(a, b));
+	else if ((*a)->value > (*a)->next->value
+		&& (*a)->next->value < (*a)->next->next->value
+		&& (*a)->value > (*a)->next->next->value)
+		moves = ft_strjoin(moves, ra(a, b));
+	else if ((*a)->value > (*a)->next->value
+		&& (*a)->next->value < (*a)->next->next->value
+		&& (*a)->value > (*a)->next->next->value)
+	{
+		moves = ft_strjoin(moves, sa(a, b));
+		moves = ft_strjoin(moves, rra(a, b));
+	}
+	return (moves);
 }
