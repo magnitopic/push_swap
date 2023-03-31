@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:28:49 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/28 15:02:23 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:48:25 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ char	*rrr(t_stack **stack_a, t_stack **stack_b);
 // src
 int		ft_issorted(t_stack *stack_a, t_stack *stack_b);
 t_stack	*validator(int argc, char **argv);
+void	free_stacks(t_stack *stack);
 
 #endif

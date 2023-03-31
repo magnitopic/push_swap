@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:09:41 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/10 17:45:05 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:11:42 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	dict_size(t_entry *dictionary)
 	int	len;
 
 	len = 1;
-	if (dictionary)
+	if (dictionary != NULL)
 	{
-		while (dictionary->next != 0)
+		while (dictionary->next != NULL)
 		{
 			dictionary = dictionary->next;
 			len++;
@@ -74,5 +74,6 @@ t_entry	*dict_new(t_stack *stack_a, t_stack *stack_b, char *moves)
 	new->stack_a = stack_a;
 	new->stack_b = stack_b;
 	new->moves = moves;
+	new->next = NULL;
 	return (new);
 }

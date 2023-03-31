@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/31 14:46:38 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:59:55 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 
 char	*sort_three(t_stack **a, t_stack **b, char *moves)
 {
-	t_stack	*one;
-	t_stack	*two;
-	t_stack	*three;
+	int	one;
+	int	two;
+	int	three;
 
 	one = (*a)->value;
 	two = (*a)->next->value;
@@ -78,7 +78,7 @@ char	*sort_three(t_stack **a, t_stack **b, char *moves)
 		moves = ft_strjoin(moves, rra(a, b));
 	else if (one > two && two < three && one > three)
 		moves = ft_strjoin(moves, ra(a, b));
-	else if (one > two && two < three && one > three)
+	else if (one > two && two > three && one > three)
 	{
 		moves = ft_strjoin(moves, sa(a, b));
 		moves = ft_strjoin(moves, rra(a, b));
@@ -86,7 +86,11 @@ char	*sort_three(t_stack **a, t_stack **b, char *moves)
 	return (moves);
 }
 
-/* void	free_stacks(t_stack stack_a, t_stack stack_b)
+void	free_stacks(t_stack *stack)
 {
-
-} */
+	if (stack == NULL)
+		return ;
+	if (stack->next != NULL)
+		free_stacks(stack->next);
+	free(stack);
+}

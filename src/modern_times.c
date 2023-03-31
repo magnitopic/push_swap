@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/30 18:38:15 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:49:50 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,15 @@ static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
 
 /* static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
 {
-	t_stack	first;
-	
+	while (ft_issorted(*stack_a, *stack_b) == 0)
+	{
+		stack_print(*stack_a);
+		stack_print(*stack_b);
+		if (get(*stack_a, stack_size(*stack_a) - 1)->value < (*stack_b)->value)
+			moves = ft_strjoin(moves, pa(stack_a, stack_b));
+		else
+			moves = ft_strjoin(moves, rra(stack_a, stack_b));
+	}
 	return (moves);
 } */
 
@@ -111,6 +118,8 @@ char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 		moves = ft_strjoin(moves, pb(stack_a, stack_b));
 	}
 	moves = order_stacks(stack_a, stack_b, moves);
-	//moves = zipper(&stack_a, &stack_a, moves);
+	/* moves = zipper(stack_a, stack_b, moves);
+	stack_print(*stack_a);
+	stack_print(*stack_b); */
 	return (moves);
 }
