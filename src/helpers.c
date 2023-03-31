@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/30 18:12:16 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:46:38 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,29 +59,34 @@ int	ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 
 char	*sort_three(t_stack **a, t_stack **b, char *moves)
 {
-	if ((*a)->value < (*a)->next->value
-		&& (*a)->next->value > (*a)->next->next->value
-		&& (*a)->value < (*a)->next->next->value)
-		moves = ft_strjoin(ft_strjoin(ft_strjoin(moves, \
-		ra(a, b)), sa(a, b)), rra(a, b));
-	else if ((*a)->value > (*a)->next->value
-		&& (*a)->next->value < (*a)->next->next->value
-		&& (*a)->value < (*a)->next->next->value)
-		moves = ft_strjoin(moves, sa(a, b));
-	else if ((*a)->value < (*a)->next->value
-		&& (*a)->next->value > (*a)->next->next->value
-		&& (*a)->value > (*a)->next->next->value)
-		moves = ft_strjoin(moves, rra(a, b));
-	else if ((*a)->value > (*a)->next->value
-		&& (*a)->next->value < (*a)->next->next->value
-		&& (*a)->value > (*a)->next->next->value)
+	t_stack	*one;
+	t_stack	*two;
+	t_stack	*three;
+
+	one = (*a)->value;
+	two = (*a)->next->value;
+	three = (*a)->next->next->value;
+	if (one < two && two > three && one < three)
+	{
 		moves = ft_strjoin(moves, ra(a, b));
-	else if ((*a)->value > (*a)->next->value
-		&& (*a)->next->value < (*a)->next->next->value
-		&& (*a)->value > (*a)->next->next->value)
+		moves = ft_strjoin(moves, sa(a, b));
+		moves = ft_strjoin(moves, rra(a, b));
+	}
+	else if (one > two && two < three && one < three)
+		moves = ft_strjoin(moves, sa(a, b));
+	else if (one < two && two > three && one > three)
+		moves = ft_strjoin(moves, rra(a, b));
+	else if (one > two && two < three && one > three)
+		moves = ft_strjoin(moves, ra(a, b));
+	else if (one > two && two < three && one > three)
 	{
 		moves = ft_strjoin(moves, sa(a, b));
 		moves = ft_strjoin(moves, rra(a, b));
 	}
 	return (moves);
 }
+
+/* void	free_stacks(t_stack stack_a, t_stack stack_b)
+{
+
+} */
