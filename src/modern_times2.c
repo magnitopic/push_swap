@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:10:37 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/30 17:46:49 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:05:21 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,38 @@ void	count_steps_a(t_stack *stack_a)
 	}
 }
 
+static int	get_target(t_stack *stack_a, t_stack *stack_b)
+{
+	int		target;
+	t_stack	*stack_b_cpy;
+
+	stack_b_cpy = stack_b;
+	if (stack_a->value < min(stack_b) || stack_a->value > max(stack_b))
+			target = max(stack_b);
+	else
+	{
+		while (stack_b_cpy->next != NULL)
+		{
+			if (stack_a->value < stack_b_cpy->value
+				&& stack_a->value > stack_b_cpy->next->value)
+				target = stack_b_cpy->next->value;
+			else if (stack_a->value
+				< get(stack_b, stack_size(stack_b) - 1)->value
+				&& stack_a->value > stack_b->value)
+				target = stack_b->value;
+			stack_b_cpy = stack_b_cpy->next;
+		}
+	}
+	return (target);
+}
+
 void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*stack_b_cpy;
 	int		target;
 
 	while (stack_a != NULL)
 	{
-		stack_b_cpy = stack_b;
-		if (stack_a->value < min(stack_b) || stack_a->value > max(stack_b))
-			target = max(stack_b);
-		else
-		{
-			while (stack_b_cpy->next != NULL)
-			{
-				if (stack_a->value < stack_b_cpy->value
-					&& stack_a->value > stack_b_cpy->next->value)
-					target = stack_b_cpy->next->value;
-				else if (stack_a->value
-					< get(stack_b, stack_size(stack_b) - 1)->value
-					&& stack_a->value > stack_b->value)
-					target = stack_b->value;
-				stack_b_cpy = stack_b_cpy->next;
-			}
-		}
+		target = get_target(stack_a, stack_b);
 		if (get_pos(stack_b, target) <= stack_size(stack_b) / 2)
 			stack_a->pasos_b = get_pos(stack_b, target);
 		else
