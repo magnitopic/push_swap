@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/31 15:56:09 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/01 11:17:40 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*new_move(t_stack **stack_a, t_stack **stack_b, int i)
 	return (moves[i](stack_a, stack_b));
 }
 
-char	*short_sort(t_stack *stack_a, t_stack *stack_b)
+t_entry	*short_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	t_entry	*dictionary;
 	int		i;
@@ -52,7 +52,7 @@ char	*short_sort(t_stack *stack_a, t_stack *stack_b)
 				dict_add_back(&dictionary, dict_new(stack_a, stack_b, \
 				ft_strjoin(dict_get(dictionary, j)->moves, move)));
 			if (ft_issorted(stack_a, stack_b))
-				return (dict_get(dictionary, dict_size(dictionary) - 1)->moves);
+				return (dictionary);
 		}
 		j++;
 	}

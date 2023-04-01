@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/31 15:49:50 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/01 21:28:07 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int pos)
 	char	*moves;
 
 	i = 0;
-	moves = "";
+	moves="";
 	while (ft_abs(get(*stack_a, pos)->pasos_a) > i)
 	{
 		if (get(*stack_a, pos)->pasos_a > 0)
+		{
 			moves = ft_strjoin(moves, ra(stack_a, stack_b));
+		}
 		else
 			moves = ft_strjoin(moves, rra(stack_a, stack_b));
+		pos = min_steps(stack_a);
 		i++;
 	}
 	i = 0;
@@ -42,26 +45,26 @@ static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int pos)
 static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 {
 	t_stack	*value;
-	int		shared_values;
-	int		i;
 
 	value = get(*stack_a, pos);
-	i = 0;
 	if (value->pasos_a * value->pasos_b > 0)
 	{
-		if (value->pasos_a < value->pasos_b)
-			shared_values = value->pasos_a;
-		else
-			shared_values = value->pasos_b;
-		while (i < shared_values)
+		while (value->pasos_a != 0 || value->pasos_b != 0)
 		{
 			if (value->pasos_a > 0)
+			{
 				moves = ft_strjoin(moves, rr(stack_a, stack_b));
+				value->pasos_a--;
+				value->pasos_b--;
+			}
 			else
+			{
 				moves = ft_strjoin(moves, rrr(stack_a, stack_b));
-			value->pasos_a--;
-			value->pasos_b--;
+				value->pasos_a++;
+				value->pasos_b++;
+			}
 		}
+		pos = min_steps(stack_a);
 	}
 	moves = ft_strjoin(moves, move_stacks(stack_a, stack_b, pos));
 	return (moves);
@@ -110,9 +113,25 @@ char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 	moves = ft_strjoin(moves, pb(stack_a, stack_b));
 	while (stack_size(*stack_a) > 3)
 	{
+		/* ft_printf("\nStackA\t");
+		for (int i = 0; i < stack_size(*stack_a); i++)
+			ft_printf("%d\t",get(*stack_a, i)->value);
+		ft_printf("\nStackB\t");
+		for (int i = 0; i < stack_size(*stack_b); i++)
+			ft_printf("%d\t",get(*stack_b, i)->value);
 		count_steps_a(*stack_a);
 		count_steps_b(*stack_a, *stack_b);
 		totaliza(*stack_a);
+		ft_printf("\nPasosA\t");
+		for (int i = 0; i < stack_size(*stack_a); i++)
+			ft_printf("%d\t",get(*stack_a, i)->pasos_a);
+		ft_printf("\nPasosB\t");
+		for (int i = 0; i < stack_size(*stack_a); i++)
+			ft_printf("%d\t",get(*stack_a, i)->pasos_b);
+		ft_printf("\nTotal:\t");
+		for (int i = 0; i < stack_size(*stack_a); i++)
+			ft_printf("%d\t",get(*stack_a, i)->total);
+		ft_printf("\n*******************\n"); */
 		pos = min_steps(stack_a);
 		moves = synergy(stack_a, stack_b, pos, moves);
 		moves = ft_strjoin(moves, pb(stack_a, stack_b));

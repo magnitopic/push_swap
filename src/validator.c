@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/31 16:47:27 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/01 09:44:41 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_stack	*create_stack(char **numbers)
 			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 		stack_a = add_new(stack_a, aux);
 	}
-	free_matrix(numbers);
+	//free_matrix(numbers);
 	return (stack_a);
 }
 
@@ -75,7 +75,7 @@ static char	*parser(char **val)
 		lst = ft_strjoin(ft_strjoin(lst, value[i]), " ");
 		i++;
 	}
-	free_matrix(val);
+	//free_matrix(val);
 	return (lst);
 }
 

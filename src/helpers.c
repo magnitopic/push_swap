@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/31 15:59:55 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/01 12:35:19 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,3 +94,8 @@ void	free_stacks(t_stack *stack)
 		free_stacks(stack->next);
 	free(stack);
 }
+
+/* void	free_dict(t_entry *dict)
+{
+	
+} */

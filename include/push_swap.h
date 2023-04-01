@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/30 18:38:37 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/01 11:22:20 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dict_add_back(t_entry **lst, t_entry *new);
 t_entry	*dict_new(t_stack *stack_a, t_stack *stack_b, char *moves);
 
 // SRC
-char	*short_sort(t_stack *stack_a, t_stack *stack_b);
+t_entry	*short_sort(t_stack *stack_a, t_stack *stack_b);
 char	*modern_times(t_stack **stack_a, t_stack **stack_b);
 int		ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b);
 void	count_steps_a(t_stack *stack_a);
