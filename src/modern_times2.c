@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:10:37 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/01 20:30:14 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:32:13 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int		target;
 
-	ft_printf("\nTarget\t");
 	while (stack_a != NULL)
 	{
 		target = get_target(stack_a, stack_b);
-		ft_printf("%d\t", target);
 		if (get_pos(stack_b, target) <= stack_size(stack_b) / 2)
 			stack_a->pasos_b = get_pos(stack_b, target);
 		else

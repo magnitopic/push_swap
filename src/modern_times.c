@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/01 21:28:07 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:33:12 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,17 @@ static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
 
 /* static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
 {
-	while (ft_issorted(*stack_a, *stack_b) == 0)
+	t_stack	*s_a_cpy;
+	
+	s_a_cpy = copy(*stack_a);
+	while (stack_size(s_a_cpy))
 	{
-		stack_print(*stack_a);
-		stack_print(*stack_b);
-		if (get(*stack_a, stack_size(*stack_a) - 1)->value < (*stack_b)->value)
+		if (max(s_a_cpy) > max(*stack_a))
 			moves = ft_strjoin(moves, pa(stack_a, stack_b));
 		else
-			moves = ft_strjoin(moves, rra(stack_a, stack_b));
+		{
+			
+		}
 	}
 	return (moves);
 } */
@@ -113,32 +116,14 @@ char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 	moves = ft_strjoin(moves, pb(stack_a, stack_b));
 	while (stack_size(*stack_a) > 3)
 	{
-		/* ft_printf("\nStackA\t");
-		for (int i = 0; i < stack_size(*stack_a); i++)
-			ft_printf("%d\t",get(*stack_a, i)->value);
-		ft_printf("\nStackB\t");
-		for (int i = 0; i < stack_size(*stack_b); i++)
-			ft_printf("%d\t",get(*stack_b, i)->value);
 		count_steps_a(*stack_a);
 		count_steps_b(*stack_a, *stack_b);
 		totaliza(*stack_a);
-		ft_printf("\nPasosA\t");
-		for (int i = 0; i < stack_size(*stack_a); i++)
-			ft_printf("%d\t",get(*stack_a, i)->pasos_a);
-		ft_printf("\nPasosB\t");
-		for (int i = 0; i < stack_size(*stack_a); i++)
-			ft_printf("%d\t",get(*stack_a, i)->pasos_b);
-		ft_printf("\nTotal:\t");
-		for (int i = 0; i < stack_size(*stack_a); i++)
-			ft_printf("%d\t",get(*stack_a, i)->total);
-		ft_printf("\n*******************\n"); */
 		pos = min_steps(stack_a);
 		moves = synergy(stack_a, stack_b, pos, moves);
 		moves = ft_strjoin(moves, pb(stack_a, stack_b));
 	}
 	moves = order_stacks(stack_a, stack_b, moves);
-	/* moves = zipper(stack_a, stack_b, moves);
-	stack_print(*stack_a);
-	stack_print(*stack_b); */
+	//moves = zipper(stack_a, stack_b, moves);
 	return (moves);
 }
