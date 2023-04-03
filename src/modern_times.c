@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/02 14:33:12 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:18:48 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int pos)
 	char	*moves;
 
 	i = 0;
-	moves="";
+	moves = "";
 	while (ft_abs(get(*stack_a, pos)->pasos_a) > i)
 	{
 		if (get(*stack_a, pos)->pasos_a > 0)
-		{
 			moves = ft_strjoin(moves, ra(stack_a, stack_b));
-		}
 		else
 			moves = ft_strjoin(moves, rra(stack_a, stack_b));
 		pos = min_steps(stack_a);
@@ -53,7 +51,7 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 		{
 			if (value->pasos_a > 0)
 			{
-				moves = ft_strjoin(moves, rr(stack_a, stack_b));
+				moves = ft_fstrjoin(moves, rr(stack_a, stack_b));
 				value->pasos_a--;
 				value->pasos_b--;
 			}
@@ -66,7 +64,7 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 		}
 		pos = min_steps(stack_a);
 	}
-	moves = ft_strjoin(moves, move_stacks(stack_a, stack_b, pos));
+	moves = ft_fstrjoin(moves, move_stacks(stack_a, stack_b, pos));
 	return (moves);
 }
 
@@ -82,9 +80,9 @@ static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
 	while ((*stack_b)->value != max(*stack_b))
 	{
 		if (max(*stack_b) <= stack_size(*stack_b) / 2)
-			moves = ft_strjoin(moves, rb(stack_a, stack_b));
+			moves = ft_fstrjoin(moves, rb(stack_a, stack_b));
 		else
-			moves = ft_strjoin(moves, rrb(stack_a, stack_b));
+			moves = ft_fstrjoin(moves, rrb(stack_a, stack_b));
 	}
 	moves = sort_three(stack_a, stack_b, moves);
 	return (moves);
@@ -93,17 +91,23 @@ static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
 /* static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
 {
 	t_stack	*s_a_cpy;
-	
+
 	s_a_cpy = copy(*stack_a);
 	while (stack_size(s_a_cpy))
 	{
-		if (max(s_a_cpy) > max(*stack_a))
-			moves = ft_strjoin(moves, pa(stack_a, stack_b));
+		ft_printf("len : %d\n", stack_size(s_a_cpy));
+		stack_print(s_a_cpy);
+		if (max(s_a_cpy) < max(*stack_b))
+			moves = ft_fstrjoin(moves, pa(stack_a, stack_b));
 		else
 		{
-			
+			moves = ft_fstrjoin(moves, rra(stack_a, stack_b));
+			free_stacks(get(s_a_cpy, stack_size(s_a_cpy) - 1));
+			ft_printf("Should be freed\n");
 		}
 	}
+	while (stack_size(*stack_b))
+		moves = ft_fstrjoin(moves, pa(stack_a, stack_b));
 	return (moves);
 } */
 
@@ -121,7 +125,7 @@ char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 		totaliza(*stack_a);
 		pos = min_steps(stack_a);
 		moves = synergy(stack_a, stack_b, pos, moves);
-		moves = ft_strjoin(moves, pb(stack_a, stack_b));
+		moves = ft_fstrjoin(moves, pb(stack_a, stack_b));
 	}
 	moves = order_stacks(stack_a, stack_b, moves);
 	//moves = zipper(stack_a, stack_b, moves);

@@ -23,7 +23,6 @@ BONUS_SRC			=	src/stack.c \
 						src/helpers.c \
 						src/validator.c \
 						src/dictionary.c \
-						src/modern_times.c \
 						src/checker_bonus.c \
 						src/moves/ft_push.c \
 						src/moves/ft_swap.c \
@@ -38,7 +37,7 @@ LIBFT_SRC			=	./libft/
 # Compiler
 CC					=	gcc
 RM					=	rm -f
-CFLAGS				=	-Wall -Werror -Wextra
+CFLAGS				=	-Wall -Werror -Wextra -g3 -fsanitize=address
 
 # Colours
 RED					=	\033[0;31m

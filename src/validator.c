@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/01 09:44:41 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/03 18:57:03 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static t_stack	*create_stack(char **numbers)
 			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 		stack_a = add_new(stack_a, aux);
 	}
-	//free_matrix(numbers);
+	/* if (numbers != NULL)
+		free_matrix(numbers); */
 	return (stack_a);
 }
 
@@ -55,27 +56,27 @@ static char	*parser(char **val)
 	int		i;
 	int		j;
 	char	*lst;
-	char	**value;
 
 	i = 0;
 	lst = "";
-	value = val;
-	while (value[i] != NULL)
+	while (val[i] != NULL)
 	{
 		j = 0;
-		if ((value[i][0] == '-' || value[i][0] == '+')
-			&& ft_strlen(value[i]) > 1)
+		if ((val[i][0] == '-' || val[i][0] == '+')
+			&& ft_strlen(val[i]) > 1)
 			j++;
-		while (value[i][j] != '\0')
+		while (val[i][j] != '\0')
 		{
-			if (!ft_isdigit(value[i][j]))
+			if (!ft_isdigit(val[i][j]))
 				(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 			j++;
 		}
-		lst = ft_strjoin(ft_strjoin(lst, value[i]), " ");
+		lst = ft_fstrjoin(ft_strjoin(lst, val[i]), " ");
 		i++;
 	}
-	//free_matrix(val);
+	ft_printf("%s", *val);
+	/* if (val != NULL)
+		free_matrix(val); */
 	return (lst);
 }
 
@@ -87,13 +88,13 @@ t_stack	*validator(int argc, char **argv)
 
 	if (argc <= 1)
 		return (NULL);
-	lst = "";
+	lst = ft_calloc(1, 1);
 	i = 1;
 	while (i < argc)
 	{
 		if (!ft_strlen(argv[i]))
 			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
-		lst = ft_strjoin(lst, parser(ft_split(argv[i++], ' ')));
+		lst = ft_fstrjoin(lst, parser(ft_split(argv[i++], ' ')));
 	}
 	stack_a = create_stack(ft_split(lst, ' '));
 	free(lst);

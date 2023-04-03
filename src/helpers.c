@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/01 12:35:19 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:46:47 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,17 @@ void	free_stacks(t_stack *stack)
 		return ;
 	if (stack->next != NULL)
 		free_stacks(stack->next);
-	free(stack);
+	(free(stack), stack = NULL);
 }
 
-/* void	free_dict(t_entry *dict)
+void	free_dict(t_entry *dict)
 {
-	
-} */
+	if (dict == NULL)
+		return ;
+	if (dict->next != NULL)
+		free_dict(dict->next);
+	free_stacks(dict->stack_a);
+	free_stacks(dict->stack_b);
+	free(dict->moves);
+	(free(dict), dict = NULL);
+}

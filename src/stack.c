@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/26 14:10:30 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:00:52 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_stack	*add_new(t_stack *stack, int value)
 	if (!stack)
 		return (new_node);
 	last_node = stack;
-	while (last_node->next != 0)
+	while (last_node->next != NULL)
 		last_node = last_node->next;
 	last_node->next = new_node;
 	return (stack);
