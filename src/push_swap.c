@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 18:08:30 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:39:57 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	if (argc <= 6)
 	{
 		dict = short_sort(stack_a, stack_b);
-		ft_printf("%s", dict->moves);
+		ft_printf("%s", dict_get(dict, dict_size(dict) - 1)->moves);
 		free_dict(dict);
 	}
 	else
