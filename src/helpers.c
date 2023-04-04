@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/03 17:46:47 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/04 16:48:25 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_issorted(t_stack *stack_a, t_stack *stack_b)
  * them to stack_a and stack_b.
  * If the stack values are already in the dictionary 1 is returned, otherwise 0.
  */
-int	ft_is_in_list(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
+int	ft_inlist(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
@@ -72,27 +72,27 @@ char	*sort_three(t_stack **a, t_stack **b, char *moves)
 		moves = ft_strjoin(moves, sa(a, b));
 		moves = ft_strjoin(moves, rra(a, b));
 	}
+	else if (one > two && two > three && one > three)
+	{
+		moves = ft_strjoin(moves, sa(a, b));
+		moves = ft_strjoin(moves, rra(a, b));
+	}
 	else if (one > two && two < three && one < three)
 		moves = ft_strjoin(moves, sa(a, b));
 	else if (one < two && two > three && one > three)
 		moves = ft_strjoin(moves, rra(a, b));
 	else if (one > two && two < three && one > three)
 		moves = ft_strjoin(moves, ra(a, b));
-	else if (one > two && two > three && one > three)
-	{
-		moves = ft_strjoin(moves, sa(a, b));
-		moves = ft_strjoin(moves, rra(a, b));
-	}
 	return (moves);
 }
 
-void	free_stacks(t_stack *stack)
+void	free_stacks(t_stack **stack)
 {
-	if (stack == NULL)
+	if (*stack == NULL)
 		return ;
-	if (stack->next != NULL)
-		free_stacks(stack->next);
-	(free(stack), stack = NULL);
+	if ((*stack)->next != NULL)
+		free_stacks(&(*stack)->next);
+	(free(*stack), *stack = NULL);
 }
 
 void	free_dict(t_entry *dict)
@@ -101,8 +101,8 @@ void	free_dict(t_entry *dict)
 		return ;
 	if (dict->next != NULL)
 		free_dict(dict->next);
-	free_stacks(dict->stack_a);
-	free_stacks(dict->stack_b);
+	free_stacks(&dict->stack_a);
+	free_stacks(&dict->stack_b);
 	free(dict->moves);
 	(free(dict), dict = NULL);
 }

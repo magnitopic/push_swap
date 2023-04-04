@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/03 17:18:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:06:05 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 	value = get(*stack_a, pos);
 	if (value->pasos_a * value->pasos_b > 0)
 	{
-		while (value->pasos_a != 0 || value->pasos_b != 0)
+		while (value->pasos_a != 0 && value->pasos_b != 0)
 		{
 			if (value->pasos_a > 0)
 			{
@@ -88,28 +88,27 @@ static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
 	return (moves);
 }
 
-/* static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
+static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
 {
 	t_stack	*s_a_cpy;
+	int		i;
 
-	s_a_cpy = copy(*stack_a);
+	i = 3;
+	s_a_cpy = get(*stack_a, stack_size(*stack_a) - i--);
 	while (stack_size(s_a_cpy))
 	{
-		ft_printf("len : %d\n", stack_size(s_a_cpy));
-		stack_print(s_a_cpy);
 		if (max(s_a_cpy) < max(*stack_b))
 			moves = ft_fstrjoin(moves, pa(stack_a, stack_b));
 		else
 		{
 			moves = ft_fstrjoin(moves, rra(stack_a, stack_b));
-			free_stacks(get(s_a_cpy, stack_size(s_a_cpy) - 1));
-			ft_printf("Should be freed\n");
+			s_a_cpy = get(*stack_a, stack_size(*stack_a) - i--);
 		}
 	}
 	while (stack_size(*stack_b))
 		moves = ft_fstrjoin(moves, pa(stack_a, stack_b));
 	return (moves);
-} */
+}
 
 char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 {
@@ -128,6 +127,6 @@ char	*modern_times(t_stack **stack_a, t_stack **stack_b)
 		moves = ft_fstrjoin(moves, pb(stack_a, stack_b));
 	}
 	moves = order_stacks(stack_a, stack_b, moves);
-	//moves = zipper(stack_a, stack_b, moves);
+	moves = zipper(stack_a, stack_b, moves);
 	return (moves);
 }
