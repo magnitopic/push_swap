@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 18:11:39 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:45:16 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ t_stack	*validator(int argc, char **argv)
 
 	if (argc <= 1)
 		return (NULL);
-	lst = "";
+	lst = calloc(1, 1);
 	i = 1;
 	while (i < argc)
 	{
 		if (!ft_strlen(argv[i]))
 			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
-		lst = ft_fstrjoin(parser(ft_split(argv[i++], ' ')), lst);
+		lst = ft_strjoin(lst, parser(ft_split(argv[i++], ' ')));
 	}
 	stack_a = create_stack(ft_split(lst, ' '));
 	free(lst);

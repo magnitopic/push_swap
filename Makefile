@@ -37,7 +37,7 @@ LIBFT_SRC			=	./libft/
 # Compiler
 CC					=	gcc
 RM					=	rm -f
-CFLAGS				=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS				=	-Wall -Werror -Wextra
 
 # Colours
 RED					=	\033[0;31m
@@ -59,7 +59,7 @@ $(LIBFT):
 $(NAME):	$(OBJS)
 			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
-bonus:		$(OBJSBNS) $(LIBFT)
+bonus:		$(LIBFT) $(OBJSBNS)
 			@$(CC) $(CFLAGS) $(OBJSBNS) $(LIBFT_SRC)$(LIBFT) -o $(NAME_BONUS)
 			@printf "$(BLUE)==> $(CYAN)Push_swap bonus compiled ✅✨\n\n$(RESET)"
 
