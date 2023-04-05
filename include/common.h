@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:28:49 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 16:43:54 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:21:28 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 
 // stack functions
 t_stack	*copy(t_stack *stack);
-t_stack	*add_new(t_stack *stack, int value);
+void	add_new(t_stack **stack, int value);
 int		compare(t_stack *lst1, t_stack *lst2);
 t_stack	*get(t_stack *stack, int pos);
 int		stack_size(t_stack *stack);

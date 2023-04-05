@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 19:21:47 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 13:26:39 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:08:56 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	totaliza(t_stack *stack_a);
 int		min_steps(t_stack **stack_a);
 char	*sort_three(t_stack **a, t_stack **b, char *moves);
 void	free_dict(t_entry *dict);
+char	*move_stack(t_stack **stack_a, t_stack **stack_b, int pos, char *moves);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 16:48:25 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:59:09 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,21 @@ char	*sort_three(t_stack **a, t_stack **b, char *moves)
 	three = (*a)->next->next->value;
 	if (one < two && two > three && one < three)
 	{
-		moves = ft_strjoin(moves, ra(a, b));
-		moves = ft_strjoin(moves, sa(a, b));
-		moves = ft_strjoin(moves, rra(a, b));
+		moves = ft_fstrjoin(moves, ra(a, b));
+		moves = ft_fstrjoin(moves, sa(a, b));
+		moves = ft_fstrjoin(moves, rra(a, b));
 	}
 	else if (one > two && two > three && one > three)
 	{
-		moves = ft_strjoin(moves, sa(a, b));
-		moves = ft_strjoin(moves, rra(a, b));
+		moves = ft_fstrjoin(moves, sa(a, b));
+		moves = ft_fstrjoin(moves, rra(a, b));
 	}
 	else if (one > two && two < three && one < three)
-		moves = ft_strjoin(moves, sa(a, b));
+		moves = ft_fstrjoin(moves, sa(a, b));
 	else if (one < two && two > three && one > three)
-		moves = ft_strjoin(moves, rra(a, b));
+		moves = ft_fstrjoin(moves, rra(a, b));
 	else if (one > two && two < three && one > three)
-		moves = ft_strjoin(moves, ra(a, b));
+		moves = ft_fstrjoin(moves, ra(a, b));
 	return (moves);
 }
 

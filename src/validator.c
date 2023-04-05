@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/05 12:45:16 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:41:42 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_stack	*create_stack(char **numbers)
 		aux = ft_atoi(numbers[i++]);
 		if (aux > 214748367 || aux < -214748368)
 			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
-		stack_a = add_new(stack_a, aux);
+		add_new(&stack_a, aux);
 	}
 	free_matrix(numbers);
 	return (stack_a);
@@ -57,7 +57,7 @@ static char	*parser(char **val)
 	char	*lst;
 
 	i = 0;
-	lst = "";
+	lst = calloc(1, 1);
 	while (val[i] != NULL)
 	{
 		j = 0;
@@ -70,7 +70,7 @@ static char	*parser(char **val)
 				(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
 			j++;
 		}
-		lst = ft_fstrjoin(ft_strjoin(lst, val[i]), " ");
+		lst = ft_fstrjoin(ft_fstrjoin(lst, val[i]), " ");
 		i++;
 	}
 	free_matrix(val);
@@ -82,6 +82,7 @@ t_stack	*validator(int argc, char **argv)
 	char	*lst;
 	t_stack	*stack_a;
 	int		i;
+	char	*parsed;
 
 	if (argc <= 1)
 		return (NULL);
@@ -91,7 +92,9 @@ t_stack	*validator(int argc, char **argv)
 	{
 		if (!ft_strlen(argv[i]))
 			(ft_putstr_fd("\033[0;31mError\n\033[0m", 2), exit(-1));
-		lst = ft_strjoin(lst, parser(ft_split(argv[i++], ' ')));
+		parsed = parser(ft_split(argv[i++], ' '));
+		lst = ft_fstrjoin(lst, parsed);
+		free(parsed);
 	}
 	stack_a = create_stack(ft_split(lst, ' '));
 	free(lst);

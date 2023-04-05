@@ -6,25 +6,23 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 18:06:05 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:09:11 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int pos)
+char	*move_stack(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 {
 	int		i;
-	char	*moves;
 
 	i = 0;
-	moves = "";
 	while (ft_abs(get(*stack_a, pos)->pasos_a) > i)
 	{
 		if (get(*stack_a, pos)->pasos_a > 0)
-			moves = ft_strjoin(moves, ra(stack_a, stack_b));
+			moves = ft_fstrjoin(moves, ra(stack_a, stack_b));
 		else
-			moves = ft_strjoin(moves, rra(stack_a, stack_b));
+			moves = ft_fstrjoin(moves, rra(stack_a, stack_b));
 		pos = min_steps(stack_a);
 		i++;
 	}
@@ -32,9 +30,9 @@ static char	*move_stacks(t_stack **stack_a, t_stack **stack_b, int pos)
 	while (ft_abs(get(*stack_a, pos)->pasos_b) > i)
 	{
 		if (get(*stack_a, pos)->pasos_b > 0)
-			moves = ft_strjoin(moves, rb(stack_a, stack_b));
+			moves = ft_fstrjoin(moves, rb(stack_a, stack_b));
 		else
-			moves = ft_strjoin(moves, rrb(stack_a, stack_b));
+			moves = ft_fstrjoin(moves, rrb(stack_a, stack_b));
 		i++;
 	}
 	return (moves);
@@ -57,14 +55,14 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 			}
 			else
 			{
-				moves = ft_strjoin(moves, rrr(stack_a, stack_b));
+				moves = ft_fstrjoin(moves, rrr(stack_a, stack_b));
 				value->pasos_a++;
 				value->pasos_b++;
 			}
 		}
 		pos = min_steps(stack_a);
 	}
-	moves = ft_fstrjoin(moves, move_stacks(stack_a, stack_b, pos));
+	moves = move_stack(stack_a, stack_b, pos, moves);
 	return (moves);
 }
 

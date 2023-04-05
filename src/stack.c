@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 15:29:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:21:55 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,39 @@ t_stack	*copy(t_stack *stack)
 	i = 0;
 	aux = malloc(sizeof(int));
 	*aux = get(stack, i++)->value;
-	new_stack = add_new(new_stack, *aux);
+	add_new(&new_stack, *aux);
 	while (i < stack_size(stack))
 	{
 		aux = malloc(sizeof(int));
 		*aux = get(stack, i++)->value;
-		add_new(new_stack, *aux);
+		add_new(&new_stack, *aux);
 	}
 	return (new_stack);
 }
 
-t_stack	*add_new(t_stack *stack, int value)
+void	add_new(t_stack **stack, int value)
 {
 	t_stack	*new_node;
 	t_stack	*last_node;
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
-		return (NULL);
+		return ;
 	new_node->value = value;
 	new_node->pasos_a = 0;
 	new_node->pasos_b = 0;
 	new_node->next = NULL;
-	if (!stack)
-		return (new_node);
-	last_node = stack;
+	if (!*stack)
+	{
+		*stack = new_node;
+		return ;
+	}
+	last_node = *stack;
 	while (last_node->next != NULL)
+	{
 		last_node = last_node->next;
+	}
 	last_node->next = new_node;
-	return (stack);
 }
 
 int	compare(t_stack *lst1, t_stack *lst2)
