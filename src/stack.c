@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/05 16:21:55 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:28:05 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,18 @@ t_stack	*copy(t_stack *stack)
 {
 	int		i;
 	t_stack	*new_stack;
-	int		*aux;
+	int		aux;
 
 	if (!stack_size(stack))
 		return (NULL);
 	new_stack = NULL;
 	i = 0;
-	aux = malloc(sizeof(int));
-	*aux = get(stack, i++)->value;
-	add_new(&new_stack, *aux);
+	aux = get(stack, i++)->value;
+	add_new(&new_stack, aux);
 	while (i < stack_size(stack))
 	{
-		aux = malloc(sizeof(int));
-		*aux = get(stack, i++)->value;
-		add_new(&new_stack, *aux);
+		aux = get(stack, i++)->value;
+		add_new(&new_stack, aux);
 	}
 	return (new_stack);
 }
