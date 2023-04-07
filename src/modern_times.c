@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/05 16:09:11 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/07 20:03:43 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 				value->pasos_b++;
 			}
 		}
+		totaliza(*stack_a);
 		pos = min_steps(stack_a);
 	}
 	moves = move_stack(stack_a, stack_b, pos, moves);
