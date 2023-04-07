@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 14:10:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/03/27 15:22:11 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:36:07 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	max(t_stack *stack)
 {
 	int	max;
 
+	if (!stack)
+		return (0);
 	max = stack->value;
 	while (stack != NULL)
 	{
