@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:29:01 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 12:38:57 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/09 16:20:23 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_entry	*short_sort(t_stack *stack_a, t_stack *stack_b)
 					return (dictionary);
 			}
 			else
-				(free(stack_a), free(stack_b));
+				(free_stacks(&stack_a), free_stacks(&stack_b));
 		}
 		j++;
 	}
