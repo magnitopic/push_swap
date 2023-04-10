@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/05 15:59:09 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/10 12:48:23 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_inlist(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-char	*sort_three(t_stack **a, t_stack **b, char *moves)
+void	sort_three(t_stack **a, t_stack **b)
 {
 	int	one;
 	int	two;
@@ -68,22 +68,21 @@ char	*sort_three(t_stack **a, t_stack **b, char *moves)
 	three = (*a)->next->next->value;
 	if (one < two && two > three && one < three)
 	{
-		moves = ft_fstrjoin(moves, ra(a, b));
-		moves = ft_fstrjoin(moves, sa(a, b));
-		moves = ft_fstrjoin(moves, rra(a, b));
+		write(1, ra(a, b), 3);
+		write(1, sa(a, b), 3);
+		write(1, rra(a, b), 4);
 	}
 	else if (one > two && two > three && one > three)
 	{
-		moves = ft_fstrjoin(moves, sa(a, b));
-		moves = ft_fstrjoin(moves, rra(a, b));
+		write(1, sa(a, b), 3);
+		write(1, rra(a, b), 4);
 	}
 	else if (one > two && two < three && one < three)
-		moves = ft_fstrjoin(moves, sa(a, b));
+		write(1, sa(a, b), 3);
 	else if (one < two && two > three && one > three)
-		moves = ft_fstrjoin(moves, rra(a, b));
+		write(1, rra(a, b), 4);
 	else if (one > two && two < three && one > three)
-		moves = ft_fstrjoin(moves, ra(a, b));
-	return (moves);
+		write(1, ra(a, b), 3);
 }
 
 void	free_stacks(t_stack **stack)

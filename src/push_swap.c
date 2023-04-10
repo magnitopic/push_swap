@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:16:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/04 18:39:57 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/10 12:48:48 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_entry	*dict;
-	char	*moves;
 
 	stack_a = validator(argc, argv);
 	stack_b = NULL;
@@ -31,10 +30,8 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		moves = modern_times(&stack_a, &stack_b);
-		ft_printf("%s", moves);
+		modern_times(&stack_a, &stack_b);
 		free_stacks(&stack_a);
-		free(moves);
 	}
 	return (0);
 }

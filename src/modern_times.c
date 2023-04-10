@@ -6,13 +6,13 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/07 20:03:43 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/10 12:49:15 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-char	*move_stack(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
+static void	move_stack(t_stack **stack_a, t_stack **stack_b, int pos)
 {
 	int		i;
 
@@ -20,9 +20,9 @@ char	*move_stack(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 	while (ft_abs(get(*stack_a, pos)->pasos_a) > i)
 	{
 		if (get(*stack_a, pos)->pasos_a > 0)
-			moves = ft_fstrjoin(moves, ra(stack_a, stack_b));
+			write(1, ra(stack_a, stack_b), 3);
 		else
-			moves = ft_fstrjoin(moves, rra(stack_a, stack_b));
+			write(1, rra(stack_a, stack_b), 4);
 		pos = min_steps(stack_a);
 		i++;
 	}
@@ -30,15 +30,14 @@ char	*move_stack(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 	while (ft_abs(get(*stack_a, pos)->pasos_b) > i)
 	{
 		if (get(*stack_a, pos)->pasos_b > 0)
-			moves = ft_fstrjoin(moves, rb(stack_a, stack_b));
+			write(1, rb(stack_a, stack_b), 3);
 		else
-			moves = ft_fstrjoin(moves, rrb(stack_a, stack_b));
+			write(1, rrb(stack_a, stack_b), 4);
 		i++;
 	}
-	return (moves);
 }
 
-static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
+static void	synergy(t_stack **stack_a, t_stack **stack_b, int pos)
 {
 	t_stack	*value;
 
@@ -49,13 +48,13 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 		{
 			if (value->pasos_a > 0)
 			{
-				moves = ft_fstrjoin(moves, rr(stack_a, stack_b));
+				write(1, rr(stack_a, stack_b), 3);
 				value->pasos_a--;
 				value->pasos_b--;
 			}
 			else
 			{
-				moves = ft_fstrjoin(moves, rrr(stack_a, stack_b));
+				write(1, rrr(stack_a, stack_b), 4);
 				value->pasos_a++;
 				value->pasos_b++;
 			}
@@ -63,8 +62,7 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
 		totaliza(*stack_a);
 		pos = min_steps(stack_a);
 	}
-	moves = move_stack(stack_a, stack_b, pos, moves);
-	return (moves);
+	move_stack(stack_a, stack_b, pos);
 }
 
 /**
@@ -74,20 +72,19 @@ static char	*synergy(t_stack **stack_a, t_stack **stack_b, int pos, char *moves)
  * And we call the `sort_three` function, from the helpers file, to sort the
  * three numbers we left in `stack_a`.
  */
-static char	*order_stacks(t_stack **stack_a, t_stack **stack_b, char *moves)
+static void	order_stacks(t_stack **stack_a, t_stack **stack_b)
 {
 	while ((*stack_b)->value != max(*stack_b))
 	{
 		if (max(*stack_b) <= stack_size(*stack_b) / 2)
-			moves = ft_fstrjoin(moves, rb(stack_a, stack_b));
+			write(1, rb(stack_a, stack_b), 3);
 		else
-			moves = ft_fstrjoin(moves, rrb(stack_a, stack_b));
+			write(1, rrb(stack_a, stack_b), 4);
 	}
-	moves = sort_three(stack_a, stack_b, moves);
-	return (moves);
+	sort_three(stack_a, stack_b);
 }
 
-static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
+static void	zipper(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*s_a_cpy;
 	int		i;
@@ -97,35 +94,32 @@ static char	*zipper(t_stack **stack_a, t_stack **stack_b, char *moves)
 	while (stack_size(s_a_cpy))
 	{
 		if (max(s_a_cpy) < max(*stack_b))
-			moves = ft_fstrjoin(moves, pa(stack_a, stack_b));
+			write(1, pa(stack_a, stack_b), 3);
 		else
 		{
-			moves = ft_fstrjoin(moves, rra(stack_a, stack_b));
+			write(1, rra(stack_a, stack_b), 4);
 			s_a_cpy = get(*stack_a, stack_size(*stack_a) - i--);
 		}
 	}
 	while (stack_size(*stack_b))
-		moves = ft_fstrjoin(moves, pa(stack_a, stack_b));
-	return (moves);
+		write(1, pa(stack_a, stack_b), 3);
 }
 
-char	*modern_times(t_stack **stack_a, t_stack **stack_b)
+void	modern_times(t_stack **stack_a, t_stack **stack_b)
 {
-	char	*moves;
 	int		pos;
 
-	moves = pb(stack_a, stack_b);
-	moves = ft_strjoin(moves, pb(stack_a, stack_b));
+	write(1, pb(stack_a, stack_b), 3);
+	write(1, pb(stack_a, stack_b), 3);
 	while (stack_size(*stack_a) > 3)
 	{
 		count_steps_a(*stack_a);
 		count_steps_b(*stack_a, *stack_b);
 		totaliza(*stack_a);
 		pos = min_steps(stack_a);
-		moves = synergy(stack_a, stack_b, pos, moves);
-		moves = ft_fstrjoin(moves, pb(stack_a, stack_b));
+		synergy(stack_a, stack_b, pos);
+		write(1, pb(stack_a, stack_b), 3);
 	}
-	moves = order_stacks(stack_a, stack_b, moves);
-	moves = zipper(stack_a, stack_b, moves);
-	return (moves);
+	order_stacks(stack_a, stack_b);
+	zipper(stack_a, stack_b);
 }
