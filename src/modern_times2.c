@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:10:37 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/02 14:32:13 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:48:30 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,25 @@ void	count_steps_a(t_stack *stack_a)
 	}
 }
 
-static int	get_target(t_stack *stack_a, t_stack *stack_b)
+static int	get_target(t_stack *stack_a, t_stack *stack_b, int s_b_size)
 {
 	int		target;
 	t_stack	*stack_b_cpy;
+	int		lst_value;
 
 	stack_b_cpy = stack_b;
 	if (stack_a->value < min(stack_b) || stack_a->value > max(stack_b))
 			target = max(stack_b);
 	else
 	{
+		lst_value = get(stack_b, s_b_size - 1)->value;
 		while (stack_b_cpy->next != NULL)
 		{
 			if (stack_a->value < stack_b_cpy->value
 				&& stack_a->value > stack_b_cpy->next->value)
 				target = stack_b_cpy->next->value;
 			else if (stack_a->value
-				< get(stack_b, stack_size(stack_b) - 1)->value
+				< lst_value
 				&& stack_a->value > stack_b->value)
 				target = stack_b->value;
 			stack_b_cpy = stack_b_cpy->next;
@@ -57,15 +59,17 @@ static int	get_target(t_stack *stack_a, t_stack *stack_b)
 
 void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 {
-	int		target;
+	int	target;
+	int	s_b_size;
 
+	s_b_size = stack_size(stack_b);
 	while (stack_a != NULL)
 	{
-		target = get_target(stack_a, stack_b);
-		if (get_pos(stack_b, target) <= stack_size(stack_b) / 2)
+		target = get_target(stack_a, stack_b, s_b_size);
+		if (get_pos(stack_b, target) <= s_b_size / 2)
 			stack_a->pasos_b = get_pos(stack_b, target);
 		else
-			stack_a->pasos_b = -(stack_size(stack_b) \
+			stack_a->pasos_b = -(s_b_size \
 			- get_pos(stack_b, target));
 		stack_a = stack_a->next;
 	}

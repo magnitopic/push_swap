@@ -37,7 +37,7 @@ LIBFT_SRC			=	./libft/
 # Compiler
 CC					=	gcc
 RM					=	rm -f
-CFLAGS				=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS				=	-Wall -Werror -Wextra
 
 # Colours
 RED					=	\033[0;31m
