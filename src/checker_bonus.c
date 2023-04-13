@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 12:51:16 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/10 13:01:26 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:56:17 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	main(int argc, char **argv)
 	}
 	free(move);
 	if (ft_issorted(stack_a, stack_b))
-		ft_printf("OK\n");
+		ft_printf("\033[0;32mOK\033[0m\n");
 	else
-		ft_printf("KO\n");
+		ft_printf("\033[0;31mKO\033[0m\n");
 	free_stacks(&stack_a);
 	free_stacks(&stack_b);
 	return (0);
