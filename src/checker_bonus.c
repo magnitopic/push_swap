@@ -6,11 +6,17 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 12:51:16 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/13 18:56:17 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:10:42 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
+
+/**
+ * BONUS PART.
+ * A checker file to verify whether a given group of moves
+ * can sort a given stack.
+*/
 
 static void	check_move(char *move, t_stack **stack_a, t_stack **stack_b)
 {
@@ -40,6 +46,11 @@ static void	check_move(char *move, t_stack **stack_a, t_stack **stack_b)
 		(ft_printf("\033[0;31mError\n\033[0m"), exit(-1));
 }
 
+/**
+ * The received arguments are the same for the main program and must also be
+ * verified.
+ * Using GNL we read the moves one by one.
+*/
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;

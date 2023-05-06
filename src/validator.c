@@ -6,12 +6,15 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:47:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/11 18:55:20 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:02:30 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+/**
+ * Once the stack is created and numeric we check no numbers repeat.
+*/
 static void	no_repeating_values(t_stack *stack_a, int len)
 {
 	int		i;
@@ -34,6 +37,11 @@ static void	no_repeating_values(t_stack *stack_a, int len)
 	}
 }
 
+/**
+ * With the number matrix we receive by parameters we can create the stack.
+ * When the number gets converted with atoi we make sure the value is not 
+ * larger than MAX_INT.
+*/
 static t_stack	*create_stack(char **numbers)
 {
 	t_stack		*stack_a;
@@ -57,6 +65,11 @@ static t_stack	*create_stack(char **numbers)
 	return (stack_a);
 }
 
+/**
+ * Parser is called for every argument individually as a single arg can
+ * contain many numbers we need to verify individually.
+ * Verify symbols and if value is not a digit.
+*/
 static char	*parser(char **val)
 {
 	int		i;
@@ -86,6 +99,12 @@ static char	*parser(char **val)
 	return (lst);
 }
 
+/**
+ * Validator will return a stack of number using the
+ * dynamic list struct `t_stack`.
+ * It will also verify the input is valid.
+ * If one of the criteria is not met an error is raised and the program exited.
+*/
 t_stack	*validator(int argc, char **argv)
 {
 	char	*lst;

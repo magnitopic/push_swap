@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:24:27 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/10 12:48:23 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:04:25 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * Function to check wether the stacks are sorted.
  * For that to be true stack_b must be empty and
- * stack_a must have all values from smallest to largest
+ * stack_a must have all values from smallest to largest.
  */
 int	ft_issorted(t_stack *stack_a, t_stack *stack_b)
 {
@@ -57,6 +57,9 @@ int	ft_inlist(t_entry *dict, t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
+/**
+ * Prints the moves that need to be done to sort any 3 numbers.
+*/
 void	sort_three(t_stack **a, t_stack **b)
 {
 	int	one;
@@ -85,6 +88,9 @@ void	sort_three(t_stack **a, t_stack **b)
 		write(1, ra(a, b), 3);
 }
 
+/**
+ * Recursive function to free a stack.
+*/
 void	free_stacks(t_stack **stack)
 {
 	if (*stack == NULL)
@@ -94,6 +100,9 @@ void	free_stacks(t_stack **stack)
 	(free(*stack), *stack = NULL);
 }
 
+/**
+ * Recursive function to free a dictionary and it's contents.
+*/
 void	free_dict(t_entry *dict)
 {
 	if (dict == NULL)

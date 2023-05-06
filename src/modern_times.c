@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:56:12 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/10 12:49:15 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/06 13:39:05 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ static void	move_stack(t_stack **stack_a, t_stack **stack_b, int pos)
 	}
 }
 
+/**
+ * Now that we know what number takes the least amount of moves we can save some
+ * steps by determining if we can have some synergy with our moves.
+ * If steps for stack_a and stack_b have the same symbol it means that there is
+ * synergy. Witch means we can use `rr` or `rrr` to move both stacks at the same
+ * time to save moves.
+*/
 static void	synergy(t_stack **stack_a, t_stack **stack_b, int pos)
 {
 	t_stack	*value;
@@ -105,6 +112,11 @@ static void	zipper(t_stack **stack_a, t_stack **stack_b)
 		write(1, pa(stack_a, stack_b), 3);
 }
 
+/**
+ * The modern times algorithm sends the first two numbers to `stack_b` from
+ * the start just to have something to compare with the rest of the numbers.
+ * Next we will count for each number the mount of moves we would need to 
+*/
 void	modern_times(t_stack **stack_a, t_stack **stack_b)
 {
 	int		pos;
