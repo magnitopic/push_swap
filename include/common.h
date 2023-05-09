@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:28:49 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/05 13:21:28 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/08 07:56:30 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 typedef struct s_stack
 {
 	int				value;
-	int				pasos_a;
-	int				pasos_b;
+	int				steps_a;
+	int				steps_b;
 	int				total;
 	struct s_stack	*next;
 }	t_stack;

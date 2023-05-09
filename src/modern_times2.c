@@ -6,12 +6,16 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:10:37 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/11 17:48:30 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/08 08:06:14 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+/**
+ * Counts the necessary steps to get each values in `stack_a` to the front of the
+ * stack. Negative values mean it should be moved with `rra` to save moves.
+*/
 void	count_steps_a(t_stack *stack_a)
 {
 	int	len;
@@ -22,14 +26,18 @@ void	count_steps_a(t_stack *stack_a)
 	while (stack_a != NULL)
 	{
 		if (len <= (str_len / 2))
-			stack_a->pasos_a = len;
+			stack_a->steps_a = len;
 		else
-			stack_a->pasos_a = len - str_len;
+			stack_a->steps_a = len - str_len;
 		stack_a = stack_a->next;
 		len++;
 	}
 }
 
+/**
+ * To count the steps for `stack_b` we need to know what value we want to reach.
+ * So we determine the target where the value should be positioned.
+*/
 static int	get_target(t_stack *stack_a, t_stack *stack_b, int s_b_size)
 {
 	int		target;
@@ -57,6 +65,11 @@ static int	get_target(t_stack *stack_a, t_stack *stack_b, int s_b_size)
 	return (target);
 }
 
+/**
+ * Knowing the target we count how many steps we need to move `stack_b`.
+ * That value is saved in `steps_b` of the value in `stack_a` that we are
+ * looking at.
+*/
 void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int	target;
@@ -67,31 +80,40 @@ void	count_steps_b(t_stack *stack_a, t_stack *stack_b)
 	{
 		target = get_target(stack_a, stack_b, s_b_size);
 		if (get_pos(stack_b, target) <= s_b_size / 2)
-			stack_a->pasos_b = get_pos(stack_b, target);
+			stack_a->steps_b = get_pos(stack_b, target);
 		else
-			stack_a->pasos_b = -(s_b_size \
+			stack_a->steps_b = -(s_b_size \
 			- get_pos(stack_b, target));
 		stack_a = stack_a->next;
 	}
 }
 
-void	totaliza(t_stack *stack_a)
+/**
+ * To get how many total steps need to be taken to move each value we
+ * sum the values in `steps_a` and `steps_b` but with absolute values
+ * since we have negative numbers to indicate they need to move backwards.
+*/
+void	totalize(t_stack *stack_a)
 {
 	while (stack_a != NULL)
 	{
-		if ((stack_a->pasos_a * stack_a->pasos_b) < 0)
-			stack_a->total = abs(stack_a->pasos_a) + abs(stack_a->pasos_b);
+		if ((stack_a->steps_a * stack_a->steps_b) < 0)
+			stack_a->total = abs(stack_a->steps_a) + abs(stack_a->steps_b);
 		else
 		{
-			if (abs(stack_a->pasos_a) > abs(stack_a->pasos_b))
-				stack_a->total = abs(stack_a->pasos_a);
+			if (abs(stack_a->steps_a) > abs(stack_a->steps_b))
+				stack_a->total = abs(stack_a->steps_a);
 			else
-				stack_a->total = abs(stack_a->pasos_b);
+				stack_a->total = abs(stack_a->steps_b);
 		}
 		stack_a = stack_a->next;
 	}
 }
 
+/**
+ * Having an absolute value we can decide what values will take the least
+ * number of steps to move to `stack_b`.
+*/
 int	min_steps(t_stack **stack_a)
 {
 	int		pos;

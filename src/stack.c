@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 17:13:20 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/06 17:28:05 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/08 07:56:17 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	add_new(t_stack **stack, int value)
 	if (!new_node)
 		return ;
 	new_node->value = value;
-	new_node->pasos_a = 0;
-	new_node->pasos_b = 0;
+	new_node->steps_a = 0;
+	new_node->steps_b = 0;
 	new_node->next = NULL;
 	if (!*stack)
 	{
