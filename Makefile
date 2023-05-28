@@ -65,7 +65,6 @@ bonus:		$(LIBFT) $(OBJSBNS)
 
 clean:
 			@$(RM) $(NAME) $(OBJS) $(OBJSBNS) $(NAME_BONUS)
-			@make -C libft clean
 			@printf "\n$(BLUE)==> $(RED)Removed Push_swap 🗑️\n$(RESET)"
 
 fclean:		clean
