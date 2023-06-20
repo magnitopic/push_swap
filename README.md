@@ -2,7 +2,9 @@
 
 This project will make you sort data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed you’ll have to manipulate various types of algorithms and choose the most appropriate solution (out of many) for an optimized data sorting.
 
-> Video visualization of program execution [https://youtu.be/CugSe5HDVrg](https://youtu.be/CugSe5HDVrg)
+https://github.com/magnitopic/push_swap/assets/21156058/a18ae060-f8a7-4b4e-a356-a4eb3c4e3793
+
+> Video of program execution on YouTube: [https://youtu.be/CugSe5HDVrg](https://youtu.be/CugSe5HDVrg)
 
 # Program
 
